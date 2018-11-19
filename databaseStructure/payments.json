@@ -1,0 +1,31 @@
+{
+	"payments": {
+		"payment1": {
+			"deliveryId": "string: referer to delivery collection",
+			"deliveryCost": 2000,
+			"payerName": "string",
+			"payerFistname": "string",
+			"payerEmail": "string",
+			"payerBankAccountNumber": "payer orange phone number",
+			"paymentStatus": "PAIED/REFUSED"
+		},
+		"payment2": {
+			"deliveryId": "string",
+			"deliveryCost": 2000,
+			"payerName": "string",
+			"payerFistname": "string",
+			"payerEmail": "string",
+			"payerBankAccountNumber": "payer orange phone number",
+			"paymentStatus": "PAIED/REFUSED"
+		},
+		"payment3": {
+			"deliveryId": "string",
+			"deliveryCost": 2000,
+			"payerName": "string",
+			"payerFistname": "string",
+			"payerEmail": "string",
+			"payerBankAccountNumber": "payer orange phone number",
+			"paymentStatus": "PAIED/REFUSED"
+		}
+	}
+}

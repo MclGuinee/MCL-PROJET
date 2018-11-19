@@ -1,0 +1,16 @@
+{
+	"users": {
+		"id1": {
+			"email": "string",
+			"firstname": "string",
+			"lastname": "string",
+			"phone": 0
+		},
+		"id2": {
+			"email": "string",
+			"firstname": "string",
+			"lastname": "string",
+			"phone": 0
+		}
+	}
+}

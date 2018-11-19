@@ -1,0 +1,22 @@
+{
+	"pricingRepository": [{
+			"startAddress": "Cité chemin de fer",
+			"endAddress": "Palais du peuple",
+			"deliveryPricing": 9000,
+			"deliveryFee": 1000
+		},
+		{
+			"startAddress": "Coleah",
+			"endAddress": "Landreah",
+			"deliveryPricing": 14000,
+			"deliveryFee": 1000
+		},
+		{
+			"startAddress": "Kaloum",
+			"endAddress": "Madina",
+			"deliveryPricing": 19000,
+			"deliveryFee": 1000
+		}
+	]
+
+}
