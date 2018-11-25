@@ -1,0 +1,20 @@
+{
+	"customerInformations": {
+		"customer-generated-id-1": {
+			"firstname": "string",
+			"lastname": "string",
+			"phone": 0,
+			"userId": "UID : refer to firebase authentication table",
+			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
+			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
+		},
+		"customer-generated-id-2": {
+			"firstname": "string",
+			"lastname": "string",
+			"phone": 0,
+			"userId": "UID : refer to firebase authentication table",
+			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
+			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
+		}
+	}
+}

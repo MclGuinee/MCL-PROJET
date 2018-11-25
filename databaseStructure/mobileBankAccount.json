@@ -1,0 +1,18 @@
+{
+	"mobileBankAccount": {
+		"bankAccount-generated-id-1": {
+			"customerInformation-generated-id": "UID : refer to customerInformations collection",
+			"bankNumber": "string : orange phone or other paiement mode",
+			"customerLastnameAtBank": "string",
+			"customerFirstnameAtBank": "string",
+			"bankName": "Orange monney"
+		},
+		"bankAccount-generated-id-2": {
+			"customerInformation-generated-id": "UID : refer to customerInformations collection",
+			"bankNumber": "string : orange phone or other paiement mode",
+			"customerLastnameAtBank": "string",
+			"customerFirstnameAtBank": "string",
+			"bankName": "areba monney"
+		}
+	}
+}

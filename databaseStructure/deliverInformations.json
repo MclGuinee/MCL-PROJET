@@ -1,0 +1,22 @@
+{
+	"deliverInformations": {
+		"deliver-generated-id-1": {
+			"firstname": "string",
+			"lastname": "string",
+			"phone": 0,
+			"motorBikeRegistration": 12345,
+			"userId": "UID : refer to firebase authentication table",
+			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
+			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
+		},
+		"deliver-generated-id-2": {
+			"firstname": "string",
+			"lastname": "string",
+			"phone": 0,
+			"motorBikeRegistration": 12345,
+			"userId": "UID : refer to firebase authentication table",
+			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
+			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
+		}
+	}
+}

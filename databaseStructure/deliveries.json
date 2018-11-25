@@ -1,42 +1,36 @@
 {
-	"deliveries": {
-		"delivery1": {
-			"startAddress": "string",
-			"endAddress": "string",
-			"startAddressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
-			"endAddressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
-			"deliveryStartDateTime": "firebase.firestore.FieldValue.serverTimestamp()",
-			"deliveryEndDateTime": "firebase.firestore.FieldValue.serverTimestamp()",
-			"customerName": "string",
-			"customerFirstname": "string",
-			"customerPhone": 68252562,
-			"status": "ORDERED/ACCEPTED_BY_DELIVER/DELIVERED/PAIED",
-			"delivererName": "string",
-			"delivererFistname": "string",
-			"delivererPhone": 62563215,
-			"deliveryPrice": 20000,
-			"deliveryFee": 1000,
-			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
-			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
-		},
-		"delivery2": {
-			"startAddress": "string",
-			"endAddress": "string",
-			"startAddressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
-			"endAddressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
-			"deliveryStartDateTime": "firebase.firestore.FieldValue.serverTimestamp()",
-			"deliveryEndDateTime": "firebase.firestore.FieldValue.serverTimestamp()",
-			"customerName": "string",
-			"customerFirstname": "string",
-			"customerPhone": 68252562,
-			"status": "DELIVERED",
-			"delivererName": "string",
-			"delivererFistname": "string",
-			"delivererPhone": 62563215,
-			"deliveryPrice": 20000,
-			"deliveryFee": 1000,
-			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
-			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
-		}
-	}
+  "deliveries": {
+    "delivery1-generatedid": {
+      "startAddressName": "string",
+      "endAddressName": "string",
+      "startAddressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
+      "endAddressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
+      "distanceInKM": "30",
+      "deliveryStartDateTime": "firebase.firestore.FieldValue.serverTimestamp()",
+      "deliveryEndDateTime": "firebase.firestore.FieldValue.serverTimestamp()",
+      "customerInformationId": "UID : refer to customerInformations collection",
+      "status": "ORDERED/ACCEPTED_BY_DELIVER/DELIVERED/PAIED",
+      "delivererInformationId": "UID: refer to deliverInformations collection ",
+      "deliveryPrice": 20000,
+      "deliveryFee": 1000,
+      "createDate": "firebase.firestore.FieldValue.serverTimestamp()",
+      "updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
+    },
+    "delivery2-generatedid": {
+      "startAddress": "string",
+      "endAddress": "string",
+      "startAddressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
+      "endAddressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
+      "distanceInKM": "30",
+      "deliveryStartDateTime": "firebase.firestore.FieldValue.serverTimestamp()",
+      "deliveryEndDateTime": "firebase.firestore.FieldValue.serverTimestamp()",
+      "customerInformationId": "UID : refer to customerInformations collection",
+      "status": "DELIVERED",
+      "delivererInformationId": "UID: refer to deliverInformations collection ",
+      "deliveryPrice": 20000,
+      "deliveryFee": 1000,
+      "createDate": "firebase.firestore.FieldValue.serverTimestamp()",
+      "updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
+    }
+  }
 }

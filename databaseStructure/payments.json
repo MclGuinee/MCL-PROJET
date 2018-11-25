@@ -1,31 +1,31 @@
 {
 	"payments": {
-		"payment1": {
-			"deliveryId": "string: referer to delivery collection",
+		"payment1-generated-id": {
+			"deliveryId": "string: uid refer to deliveries collection",
 			"deliveryCost": 2000,
-			"payerName": "string",
-			"payerFistname": "string",
-			"payerEmail": "string",
-			"payerBankAccountNumber": "payer orange phone number",
-			"paymentStatus": "PAIED/REFUSED"
+			"deliveryFee": 1000,
+			"mobileBankAccountId": "UID : refer to mobleBankAccount collection",
+			"paymentStatus": "PAIED/REFUSED",
+			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
+			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
 		},
-		"payment2": {
+		"payment2-generated-id": {
 			"deliveryId": "string",
 			"deliveryCost": 2000,
-			"payerName": "string",
-			"payerFistname": "string",
-			"payerEmail": "string",
-			"payerBankAccountNumber": "payer orange phone number",
-			"paymentStatus": "PAIED/REFUSED"
+			"deliveryFee": 1000,
+			"mobileBankAccountId": "UID : refer to mobleBankAccount collection",
+			"paymentStatus": "PAIED/REFUSED",
+			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
+			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
 		},
-		"payment3": {
+		"payment3-generated-id": {
 			"deliveryId": "string",
 			"deliveryCost": 2000,
-			"payerName": "string",
-			"payerFistname": "string",
-			"payerEmail": "string",
-			"payerBankAccountNumber": "payer orange phone number",
-			"paymentStatus": "PAIED/REFUSED"
+			"deliveryFee": 1000,
+			"mobileBankAccountId": "UID : refer to mobleBankAccount collection",
+			"paymentStatus": "PAIED/REFUSED",
+			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
+			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
 		}
 	}
 }
