@@ -1,0 +1,16 @@
+{
+	"mobileBankAccount": {
+		"customerId": {
+			"bankNumber": "string : orange phone or other paiement mode",
+			"customerLastnameAtBank": "string",
+			"customerFirstnameAtBank": "string",
+			"bankName": "Orange monney"
+		},
+		"customerId-2": {
+			"bankNumber": "string : orange phone or other paiement mode",
+			"customerLastnameAtBank": "string",
+			"customerFirstnameAtBank": "string",
+			"bankName": "areba monney"
+		}
+	}
+}

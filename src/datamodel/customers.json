@@ -1,0 +1,18 @@
+{
+	"customers": {
+		"customerId-1": {
+			"firstname": "string",
+			"lastname": "string",
+			"phone": 0,			
+			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
+			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
+		},
+		"customerId-2": {
+			"firstname": "string",
+			"lastname": "string",
+			"phone": 0,			
+			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
+			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
+		}
+	}
+}

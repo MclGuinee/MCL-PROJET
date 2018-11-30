@@ -1,0 +1,34 @@
+{
+	"payments": {
+		"paymentId-1": {
+			"deliveryId": "string: uid refer to deliveries collection",
+			"deliveryCost": 2000,
+			"deliveryFee": 1000,
+			"customerId":"string: uid refer to customer collection",
+			"mobileBankAccountId": "UID : refer to mobleBankAccount collection",
+			"paymentStatus": "PAIED/REFUSED",
+			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
+			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
+		},
+		"paymentId-2": {
+			"deliveryId": "string",
+			"deliveryCost": 2000,
+			"deliveryFee": 1000,
+			"customerId":"string: uid refer to customer collection",
+			"mobileBankAccountId": "UID : refer to mobleBankAccount collection",
+			"paymentStatus": "PAIED/REFUSED",
+			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
+			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
+		},
+		"paymentId-3": {
+			"deliveryId": "string",
+			"deliveryCost": 2000,
+			"deliveryFee": 1000,
+			"customerId":"string: uid refer to customer collection",
+			"mobileBankAccountId": "UID : refer to mobleBankAccount collection",
+			"paymentStatus": "PAIED/REFUSED",
+			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
+			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
+		}
+	}
+}

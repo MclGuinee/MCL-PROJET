@@ -1,0 +1,38 @@
+{
+	"custumerAddresses": {
+		"customerId-1": [{
+			"addressName": "string",
+			"addressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
+			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
+			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
+		}, {
+			"addressName": "string",
+			"addressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
+			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
+			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
+		}, {
+			"addressName": "string",
+			"addressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
+			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
+			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
+
+		}],
+		"customerId-2": [{
+			"addressName": "string",
+			"addressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
+			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
+			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
+		}, {
+			"addressName": "string",
+			"addressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
+			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
+			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
+		}, {
+			"addressName": "string",
+			"addressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
+			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
+			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
+
+		}]
+	}
+}

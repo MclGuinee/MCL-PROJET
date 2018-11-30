@@ -1,0 +1,16 @@
+{
+	"pricePolicies": {
+		"byDistance": {
+			"unit": "km",
+			"deliveryPrice": 500,
+			"deliveryFee": 250,
+			"active": true
+		},
+		"byTime": {
+			"unit": "km",
+			"deliveryPrice": 500,
+			"deliveryFee": 250,
+			"active": false
+		}
+	}
+}

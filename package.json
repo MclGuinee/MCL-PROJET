@@ -1,5 +1,5 @@
 {
-  "name": "MCL",
+  "name": "mcl",
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "scripts": {
@@ -10,20 +10,26 @@
     "test": "node ./node_modules/jest/bin/jest.js --watchAll"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|expo|react-navigation|native-base-shoutem-theme|@shoutem/theme|@shoutem/animation|@shoutem/ui|tcomb-form-native)"
+    ]
   },
   "dependencies": {
-    "eslint": "^5.8.0",
     "@expo/samples": "2.1.1",
+    "eslint": "^5.8.0",
     "expo": "^31.0.2",
+    "firebase": "^5.5.9",
+    "geolib": "^2.0.24",
     "native-base": "^2.8.1",
-    "react-navigation": "^2.18.2",
-    "react-navigation-material-bottom-tabs": "^0.4.0",
     "react": "16.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz"
+    "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
+    "react-navigation": "^2.18.2",
+    "react-navigation-material-bottom-tabs": "^0.4.0"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",
+    "jest": "^23.6.0",
     "jest-expo": "^31.0.0"
   }
 }
