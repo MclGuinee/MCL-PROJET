@@ -1,6 +1,6 @@
 {
 	"custumerAddresses": {
-		"customer-generated-id-1": [{
+		"customerId-1": [{
 			"addressName": "string",
 			"addressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
 			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
@@ -17,7 +17,7 @@
 			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
 
 		}],
-		"customer-generated-id-2": [{
+		"customerId-2": [{
 			"addressName": "string",
 			"addressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
 			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",

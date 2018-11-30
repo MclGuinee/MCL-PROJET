@@ -1,102 +1,126 @@
+import {
+    database
+} from "../config/firebase-init";
+
+import geolib from 'geolib';
+import firebase from 'firebase';
+
+
 /**
  * Save a delivery order.
- * @param {*} delivery delivery collection @see ../../databaseStructure/deliveries.json
+ * @param {*} delivery delivery to save
  */
-export function saveDelivery(delivery,callback) {
-    //do nothing
+export function saveDelivery(delivery) {
+    return new Promise((resolve, reject) => {
+
+        delivery.createDate = firebase.firestore.FieldValue.serverTimestamp();
+        delivery.updateDate = firebase.firestore.FieldValue.serverTimestamp();
+
+        //Get collection
+        var deliveries = database.collection("deliveries");
+
+        //create empty doc with generate id
+        var newDocRef = deliveries.doc();
+
+        //add delivery to doc
+        newDocRef.set(delivery, {
+                merge: false
+            })
+            .then(savedDelivery => {
+                console.log("Delivery successfully written wih id :" + savedDelivery.id);
+                resolve(savedDelivery);
+            })
+            .catch(error => {
+                console.error("Error writing delivery: ", error);
+                reject(error);
+
+            });
+    });
 }
 
+
+
+/**
+ * Calculate delivery cost
+ * @param {*} delivery delevery to calculate cost
+ */
+export function calculateDeliveryCost(delivery) {
+
+    return new Promise((resolve, reject) => {
+
+        //Calculate distance between two geoPoint
+        var distanceInKm = geolib.getDistance(delivery.startAddressGeoPoint, delivery.endAddressGeoPoint);
+
+        //Get price policies
+        var docRef = database.collection("pricePolicies").where("active", "==", true).limit(1);
+        docRef
+            .get()
+            .then(activePricePolicy => {
+
+                //if price exists, do calculation
+                if (activePricePolicy.exists) {
+
+                    //Calculate delivery cost
+                    var currentDeliveryPrice = activePricePolicy.deliveryPrice * distanceInKm;
+                    var currentDeliveryFee = activePricePolicy.deliveryFee * distanceInKm;
+
+                    resolve({
+                        cost: {
+                            "price": currentDeliveryPrice,
+                            "fee": currentDeliveryFee
+                        }
+                    });
+
+                }
+            })
+            .catch(error => {
+                reject(error);
+            });
+    });
+}
 
 /**
  * 
- * @param {*} delivery delevery to calculate cost
+ * @param {*} userId 
  */
-export function calculateDeliveryCost(delivery, callback) {
+export function findCustomerDeliveries(userId) {
 
-    //return JSON.stringify(deliveryData);
-    return {
-        price: {
-            cost: 2000,
-            fee: 1000
-        }
-    };
+    return new Promise((resolve, reject) => {
+        //Get user deliveries in collection 
+        var docRef = database.collection("deliveries").where("customerId", "==", userId);
+        docRef
+            .get()
+            .then(deliveriesList => {
+                if (deliveriesList.exists) {
+                    resolve(deliveriesList);
+                }
+            })
+            .catch(error => {
+                reject(error);
+            });
+    });
+
+
 }
 
-
-export function findCustomerDeliveries(userId, callback) {
-    return {
-        "deliveries": {
-            "delivery1-generatedid": {
-                "startAddressName": "string",
-                "endAddressName": "string",
-                "startAddressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
-                "endAddressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
-                "distanceInKM": "30",
-                "deliveryStartDateTime": "firebase.firestore.FieldValue.serverTimestamp()",
-                "deliveryEndDateTime": "firebase.firestore.FieldValue.serverTimestamp()",
-                "customerInformationId": "UID : refer to customerInformations collection",
-                "status": "ORDERED/ACCEPTED_BY_DELIVER/DELIVERED/PAIED",
-                "delivererInformationId": "UID: refer to deliverInformations collection ",
-                "deliveryPrice": 20000,
-                "deliveryFee": 1000,
-                "createDate": "firebase.firestore.FieldValue.serverTimestamp()",
-                "updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
-            },
-            "delivery2-generatedid": {
-                "startAddress": "string",
-                "endAddress": "string",
-                "startAddressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
-                "endAddressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
-                "distanceInKM": "30",
-                "deliveryStartDateTime": "firebase.firestore.FieldValue.serverTimestamp()",
-                "deliveryEndDateTime": "firebase.firestore.FieldValue.serverTimestamp()",
-                "customerInformationId": "UID : refer to customerInformations collection",
-                "status": "DELIVERED",
-                "delivererInformationId": "UID: refer to deliverInformations collection ",
-                "deliveryPrice": 20000,
-                "deliveryFee": 1000,
-                "createDate": "firebase.firestore.FieldValue.serverTimestamp()",
-                "updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
-            }
-        }
-    };
-}
-
-export function findDeliverDeliveries(userId, callback) {
-    return {
-        "deliveries": {
-            "delivery1-generatedid": {
-                "startAddressName": "string",
-                "endAddressName": "string",
-                "startAddressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
-                "endAddressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
-                "distanceInKM": "30",
-                "deliveryStartDateTime": "firebase.firestore.FieldValue.serverTimestamp()",
-                "deliveryEndDateTime": "firebase.firestore.FieldValue.serverTimestamp()",
-                "customerInformationId": "UID : refer to customerInformations collection",
-                "status": "ORDERED/ACCEPTED_BY_DELIVER/DELIVERED/PAIED",
-                "delivererInformationId": "UID: refer to deliverInformations collection ",
-                "deliveryPrice": 20000,
-                "deliveryFee": 1000,
-                "createDate": "firebase.firestore.FieldValue.serverTimestamp()",
-                "updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
-            },
-            "delivery2-generatedid": {
-                "startAddress": "string",
-                "endAddress": "string",
-                "startAddressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
-                "endAddressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
-                "distanceInKM": "30",
-                "deliveryStartDateTime": "firebase.firestore.FieldValue.serverTimestamp()",
-                "deliveryEndDateTime": "firebase.firestore.FieldValue.serverTimestamp()",
-                "customerInformationId": "UID : refer to customerInformations collection",
-                "status": "DELIVERED",
-                "delivererInformationId": "UID: refer to deliverInformations collection ",
-                "deliveryPrice": 20000,
-                "deliveryFee": 1000,
-                "createDate": "firebase.firestore.FieldValue.serverTimestamp()",
-                "updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
-            }
-        }
-    };
+/**
+ * 
+ * @param {*} userId 
+ * @param {*} callback 
+ */
+export function findDelivererDeliveries(userId) {
+    return new Promise((resolve, reject) => {
+        //Get user deliveries in collection 
+        var docRef = database.collection("deliveries").where("delivererId", "==", userId);
+        docRef
+            .get()
+            .then(deliveriesList => {
+                if (deliveriesList.exists) {
+                    resolve(deliveriesList);
+                }
+            })
+            .catch(error => {
+                reject(error);
+            });
+    });
 }
