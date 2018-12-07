@@ -9,12 +9,6 @@
     "eject": "expo eject",
     "test": "node ./node_modules/jest/bin/jest.js --watchAll"
   },
-  "jest": {
-    "preset": "jest-expo",
-    "transformIgnorePatterns": [
-      "node_modules/(?!react-native|expo|react-navigation|native-base-shoutem-theme|@shoutem/theme|@shoutem/animation|@shoutem/ui|tcomb-form-native)"
-    ]
-  },
   "dependencies": {
     "@expo/samples": "2.1.1",
     "eslint": "^5.8.0",
@@ -27,9 +21,18 @@
     "react-navigation": "^2.18.2",
     "react-navigation-material-bottom-tabs": "^0.4.0"
   },
+  "babel": {
+    "presets": [
+      "module:metro-react-native-babel-preset"
+    ]
+  },
   "devDependencies": {
-    "babel-preset-expo": "^5.0.0",
+    "@babel/core": "^7.2.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "babel-preset-env": "^1.7.0",
     "jest": "^23.6.0",
-    "jest-expo": "^31.0.0"
+    "metro-react-native-babel-preset": "^0.50.0",
+    "react-test-renderer": "^16.6.3"
   }
 }

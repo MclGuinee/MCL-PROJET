@@ -26,7 +26,7 @@ describe('Test du service Deliveries', () => {
 
 
 		//when
-		expect.assertions(1);
+		//expect.assertions(1);
 
 		deliveryService.saveDelivery(delivery).then(
 			addedDelivery => {
