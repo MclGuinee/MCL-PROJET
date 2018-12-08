@@ -9,6 +9,7 @@ import firebase from 'firebase';
 /**
  * Save a delivery order.
  * @param {*} delivery delivery to save
+ * @returns delivery id
  */
 export function saveDelivery(delivery) {
     return new Promise((resolve, reject) => {
@@ -16,24 +17,17 @@ export function saveDelivery(delivery) {
         delivery.createDate = firebase.firestore.FieldValue.serverTimestamp();
         delivery.updateDate = firebase.firestore.FieldValue.serverTimestamp();
 
-        //Get collection
-        var deliveries = database.collection("deliveries");
-
-        //create empty doc with generate id
-        var newDocRef = deliveries.doc();
-
-        //add delivery to doc
-        newDocRef.set(delivery, {
-                merge: false
-            })
-            .then(savedDelivery => {
-                console.log("Delivery successfully written wih id :" + savedDelivery.id);
-                resolve(savedDelivery);
+        //create in firestore
+        var deliveries = database
+            .collection("deliveries")
+            .add(delivery)
+            .then(docRef => {
+                console.log("Delivery successfully written wih id :" + docRef.id);
+                resolve(docRef.id);
             })
             .catch(error => {
                 console.error("Error writing delivery: ", error);
                 reject(error);
-
             });
     });
 }
