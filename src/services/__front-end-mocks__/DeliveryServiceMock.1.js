@@ -17,14 +17,15 @@ export function saveDelivery(delivery) {
                 "endAddressLatitude": 47.082892,
                 "endAddressLongitude": 2.396577999999977,
                 "distanceInKM": "30",
-                "deliveryStartDateTime":new Date(),
+                "deliveryStartDateTime":'js date' firebase.firestore.FieldValue.serverTimestamp(),
+                "deliveryEndDateTime": firebase.firestore.FieldValue.serverTimestamp(),
                 "customerId": "UID : refer to customerInformations collection",
                 "status": "ORDERED/ACCEPTED_BY_DELIVER/DELIVERED/PAIED",
                 "delivererId": "UID: refer to deliverInformations collection ",
                 "deliveryPrice": 20000,
                 "deliveryFee": 1000,
-                "createDate": new Date(),
-                "updateDate": new Date()
+                "createDate": firebase.firestore.FieldValue.serverTimestamp(),
+                "updateDate": firebase.firestore.FieldValue.serverTimestamp()
             }
         });
 

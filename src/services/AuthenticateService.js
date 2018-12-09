@@ -1,110 +1,146 @@
-import { auth } from "../config/firebase-init";
+import {
+    auth,
+    database
+} from "../config/firebase-init";
 
 //Register the user using email and password
-export function register(data, callback) {
-    const { email, password, username } = data;
-    auth.createUserWithEmailAndPassword(email, password)
-        .then((resp) => {
-			createUser({ username, uid: resp.user.uid }, callback);
-        })
-        .catch((error) => {
-            callback(false, null, error);
-        });
-        
+export function register(data) {
+    return new Promise((resolve, reject) => {
+        const {
+            email,
+            password,
+            firstname,
+            lastname,
+            mobile
+        } = data;
+        auth.createUserWithEmailAndPassword(email, password)
+            .then((resp) => {
+                var user = {
+                    uid: resp.user.uid,
+                    firstname,
+                    lastname,
+                    mobile,
+                    email
+                };
+
+                createUser(user);
+                resolve(user);
+
+            })
+            .catch((error) => {
+                reject(error);
+            });
+    });
 }
 
-export function authenticate(){
-    auth.signInAnonymously().catch(function(error) {
+//Create the user in database 
+export function createUser(user) {
+    authenticate(); //connecte mcl to firebase with API KEY (without password)
+    database.collection('users').doc(user.uid).set({
+            "email": user.email,
+            "firstname": user.firstname,
+            "lastname": user.lastname,
+            "mobile": user.mobile
+        })
+        .then(user => console.log("user created"))
+        .catch(error => console.error(error));
+}
+
+
+//Connect mcl to firebase with API Key
+export function authenticate() {
+    auth.signInAnonymously().catch(function (error) {
         console.error(error.message, error);
     });
 }
 
-//Create the user object in database
-export function createUser(user, callback) {
-    authenticate();
-    const userRef = database.ref().child('users');
-    
-    userRef.child(user.uid).update({ user })
-        .then(() => {
-            console.log('createUser'+ user);
-            getUser(resp.user, callback);
-			callback(true, user, null);
-			
-        })
-        .catch((error) => {
-            console.log('createUser'+ error);
-            callback(false, null, { message: error });
-
-        });
-       
-}
 
 //Sign the user in with their email and password
-export function login(data, callback) {
-    const { email, password } = data;
-    auth.signInWithEmailAndPassword(email, password)
-        .then((resp) => {
-            console.log('login'+ resp.user);
-            getUser(resp.user, callback);
+export function login(data) {
+    return new Promise((resolve, reject) => {
+        const {
+            email,
+            password
+        } = data;
+        auth.signInWithEmailAndPassword(email, password)
+            .then((resp) => {
+                console.log('login' + resp.user);
+                resolve(getUserProfile(resp.user.uid));
+            })
+            .catch((error) => {
+                console.log('login' + error);
+                reject(error);
 
-        
-        })
-        .catch((error) => {
-            console.log('login'+ error);
-            callback(false, null, error);
-
-        })
-        
-            ;
+            });
+    });
 }
 
-//Get the user object from the realtime database
-export function getUser(user, callback) {
-    database.ref('users').child(user.uid).once('value')
-        .then(function (snapshot) {
+//Get the current signed user
+export function getCurrentSignedInUser() {
+    return auth.currentUser;
+}
 
-            const exists = (snapshot.val() !== null);
-
-            //if the user exist in the DB, replace the user variable with the returned snapshot
-            if (exists) user = snapshot.val();
-
-            data = { exists, user };
-            callback(true, data, null);
+/**
+ * Find user profile in database
+ */
+export function getUserProfile(useruid) {
+    const userRef = database.collection('users').doc(useruid).get()
+        .then(user => {
+            if (user.exists) {
+                var userData = user.data();
+                return {
+                    "useruid": user.uid,
+                    "email": userData.email,
+                    "firstname": userData.firstname,
+                    "lastname": userData.lastname,
+                    "mobile": userData.mobile
+                };
+            }
         })
-        .catch(error => callback(false, null, error));
+        .catch(error => console.error(error));
+
+}
+
+/**
+ * Send email vérification email
+ */
+export function sendEmailVerification() {
+    var user = auth.currentUser;
+
+    user.sendEmailVerification().then(function () {
+        Console.log("Email sent.");
+    }).catch(function (error) {
+        Console.error("An error happened.");
+    });
+
+}
+
+//Updade Password Reset Email
+export function updatePassword(newPassword) {
+
+    var user = auth.currentUser;
+
+    user.updatePassword(newPassword).then(function () {
+        console.log("Update successful.");
+    }).catch(function (error) {
+        console.error("An error happened.");
+    });
 }
 
 //Send Password Reset Email
-export function resetPassword(data, callback) {
-    const { email } = data;
-    auth.sendPasswordResetEmail(email)
-        .then((user) => callback(true, null, null))
-        .catch((error) => callback(false, null, error));
+export function sendPasswordResetEmail(emailAddress) {
+
+    auth.sendPasswordResetEmail(emailAddress).then(function () {
+        console.log("Email sent.");
+    }).catch(function (error) {
+        console.error("An error happened.");
+    });
+
 }
 
-export function signOut(callback) {
+export function signOut() {
     auth.signOut()
-        .then(() => {
-            if (callback) callback(true, null, null);
-        })
         .catch((error) => {
-            if (callback) callback(false, null, error);
+            if (console.error("Signout error :,", error));
         });
 }
-
-
-//Sign user in using Facebook
-export function signInWithFacebook(fbToken, callback) {
-    const credential = provider.credential(fbToken);
-    auth.signInWithCredential(credential)
-        .then((user) => getUser(user, callback))
-        .catch((error) => callback(false, null, error));
-}
-
-//Sign user in using Facebook
-// export function signInWithFacebook(fbToken, callback) {
-//     const credential = provider.credential(fbToken);
-//     auth.signInWithCredential(credential)
-//         .then((user) => getUser(user, callback))
-//         .catch((error) => callback(false, null, error));
-// }
