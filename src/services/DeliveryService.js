@@ -35,30 +35,26 @@ export function saveDelivery(delivery) {
         delivery.updateDate = firebase.firestore.FieldValue.serverTimestamp();
 
         //Calculate delivery cost and save delevery in database
-        calculateDeliveryCost(distanceInKm)
-            .then(cost => {
+        var cost = calculateDeliveryCost(distanceInKm);
 
-                delivery.deliveryPrice = cost.deliveryPrice;
-                delivery.deliveryFee = cost.deliveryFee;
+        console.log("This delivery cost is:" + cost);
 
-                console.log("Le coût de livraison est :", delivery.deliveryPrice);
-                console.log("Le frais de livraison est :", delivery.deliveryFee);
+        if (cost.deliveryPrice !== null && cost.deliveryFee !== null) {
+            delivery.deliveryPrice = cost.deliveryPrice;
+            delivery.deliveryFee = cost.deliveryFee;
 
-                //create delivery in firestore
-                database.collection("deliveries")
-                    .add(delivery)
-                    .then(docRef => {
-                        console.log("Delivery successfully written wih id :" + docRef.id);
-                        resolve(docRef.id);
-                    })
-                    .catch(error => {
-                        console.error("Error writing delivery: ", error);
-                        reject(error);
-                    });
-            }).catch(error => {
-                console.error("Error when calculating delivery cost: ", error);
-                reject(error);
-            });
+            //create delivery in firestore
+            database.collection("deliveries")
+                .add(delivery)
+                .then(docRef => {
+                    console.log("Delivery successfully written wih id :" + docRef.id);
+                    resolve(docRef.id);
+                })
+                .catch(error => {
+                    console.error("Error writing delivery: ", error);
+                    reject(error);
+                });
+        }
     });
 }
 
@@ -69,34 +65,33 @@ export function saveDelivery(delivery) {
  * @returns the delivery cost
  */
 function calculateDeliveryCost(distanceInKm) {
-    return new Promise((resolve, reject) => {
 
-        //Get price policies
-        let pricePoliciesRef = database.collection("pricePolicies").where("active", "==", true);
+    //Get price policies
+    let pricePoliciesRef = database.collection("pricePolicies").where("active", "==", true);
 
-        pricePoliciesRef.get()
-            .then(doc => {
+    pricePoliciesRef.get()
+        .then(doc => {
 
-                //if price exists, get price policy
-                if (doc.exists) {
+            //if price exists, get price policy
+            if (doc.exists) {
 
-                    //Calculate delivery cost                        
-                    let currentDeliveryPrice = doc.data().deliveryPrice * distanceInKm;
-                    let currentDeliveryFee = doc.data().deliveryFee * distanceInKm;
+                //Calculate delivery cost                        
+                let currentDeliveryPrice = doc.data().deliveryPrice * distanceInKm;
+                let currentDeliveryFee = doc.data().deliveryFee * distanceInKm;
 
-                    console.log("currentDeliveryPrice:", currentDeliveryPrice);
-                    resolve({
-                        "deliveryPrice": currentDeliveryPrice,
-                        "deliveryFee": currentDeliveryFee
-                    });
-                }
-            }).catch(error => {
-                console.error("Error getting document:", error);
+                console.log("currentDeliveryPrice:", currentDeliveryPrice);
+                let cost = {
+                    "deliveryPrice": currentDeliveryPrice,
+                    "deliveryFee": currentDeliveryFee
+                };
 
-                reject(error);
+                return cost;
+            }
+        }).catch(error => {
+            console.error("Error getting document:", error);
 
-            });
-    });
+            return error;
+        });
 }
 
 

@@ -1,6 +1,7 @@
 import {
     database
 } from "../config/firebase-init";
+import firebase from 'firebase';
 
 /**
  * Find customer by id
@@ -32,13 +33,14 @@ export function findCustomerAddresses(userId) {
     return new Promise((resolve, reject) => {
 
         //ge customer adresses collection to find selected user addresses
-        var docRef = database.collection("custumerAddresses").where("customerId", "==", userId);
+        var docRef = database.collection("custumerAddresses").doc(userId);
 
         docRef
             .get()
             .then(addresseList => {
+
                 if (addresseList.exists) {
-                    resolve(addresseList);
+                    resolve(Object.values(addresseList.data()));
                 }
             })
             .catch(error => {
@@ -50,32 +52,37 @@ export function findCustomerAddresses(userId) {
 
 /**
  * Add a customer preffered address
- * @param {*} addresse 
+ * @param {*} newAddress the customer address
+ * @param {*} userId the user uid
  */
-export function saveCustomerAdresse(address) {
+export function saveCustomerAddress(userId, newAddress) {
     return new Promise((resolve, reject) => {
 
-        delivery.createDate = firebase.firestore.FieldValue.serverTimestamp();
-        delivery.updateDate = firebase.firestore.FieldValue.serverTimestamp();
+        //Get customer addresses array
+        var docRef = database.collection("custumerAddresses").doc(userId);
 
-        //Get collection
-        var custumerAddresses = database.collection("custumerAddresses");
+        //var exists;
+        docRef.get().then(customerAddresses => {
+            //exists=customerAddresses.exists;
 
-        //create empty doc with generate id
-        var newDocRef = custumerAddresses.doc();
+            if (customerAddresses.exists) {
+                //update it
+                docRef.update({
+                    addresses: firebase.firestore.FieldValue.arrayUnion(newAddress)
+                });
+            } else {
+                //Create it
+                let newAddresses = [];
+                newAddresses.push(newAddress);
+                docRef.set({
+                    addresses: newAddresses
+                });
+            }
+        });
 
-        //add delivery to doc
-        newDocRef.set(delivery, {
-                merge: false
-            })
-            .then(addedAddress => {
-                console.log("Address successfully written wih id :" + addedAddress.id);
-                resolve(addedAddress);
-            })
-            .catch(error => {
-                console.error("Error writing delivery: ", error);
-                reject(error);
 
-            });
+        //Add new address to database
+
+
     });
 }
