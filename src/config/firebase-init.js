@@ -14,9 +14,18 @@ const config = {
     messagingSenderId: c.FIREBASE_MESSAGING_SENDER_ID
 };
 
-firebase.initializeApp(config);
+var app = firebase.initializeApp(config);
 
-export const database = firebase.database();
+//export const database = firebase.database();
+const firestore = firebase.firestore(app);
+
+//config database date
+const settings = { /* your settings... */
+    timestampsInSnapshots: true
+};
+firestore.settings(settings);
+export const database = firestore;
 export const auth = firebase.auth();
 //export const provider = new firebase.auth.FacebookAuthProvider();
 //export const storage = firebase.storage();
+

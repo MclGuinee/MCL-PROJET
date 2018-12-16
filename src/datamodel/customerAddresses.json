@@ -1,38 +1,26 @@
 {
 	"custumerAddresses": {
-		"customerId-1": [{
-			"addressName": "string",
-			"addressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
-			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
-			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
-		}, {
-			"addressName": "string",
-			"addressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
-			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
-			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
-		}, {
-			"addressName": "string",
-			"addressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
-			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
-			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
-
-		}],
-		"customerId-2": [{
-			"addressName": "string",
-			"addressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
-			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
-			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
-		}, {
-			"addressName": "string",
-			"addressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
-			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
-			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
-		}, {
-			"addressName": "string",
-			"addressGeoPoint": "new firebase.firestore.GeoPoint(latitude, longitude)",
-			"createDate": "firebase.firestore.FieldValue.serverTimestamp()",
-			"updateDate": "firebase.firestore.FieldValue.serverTimestamp()"
-
-		}]
+		"userId-1": {
+			"addresses": [{
+				"addressName": "kaloum",
+				"latitude": 9.514809,
+				"longitude": -13.707559
+			}, {
+				"addressName": "coleah",
+				"latitude": 9.514809,
+				"longitude": -13.707559
+			}, {
+				"addressName": "anta",
+				"latitude": 9.514809,
+				"longitude": -13.707559
+			}]
+		},
+		"userId-2": {
+			"addresses": [{
+				"addressName": "string",
+				"latitude": 9.514809,
+				"longitude": -13.707559
+			}]
+		}
 	}
 }

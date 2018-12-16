@@ -9,75 +9,92 @@ import firebase from 'firebase';
 /**
  * Save a delivery order.
  * @param {*} delivery delivery to save
+ * @returns delivery id
  */
 export function saveDelivery(delivery) {
+
     return new Promise((resolve, reject) => {
 
+        //Calculate delivery distance    
+        var distanceInMeters = geolib.getDistance({
+            "latitude": delivery.startAddressLatitude,
+            "longitude": delivery.startAddressLongitude
+        }, {
+            "latitude": delivery.endAddressLatitude,
+            "longitude": delivery.endAddressLongitude
+        });
+
+        var distanceInKm = distanceInMeters / 1000;
+
+        console.log("Distance entre les deux adresses est:", distanceInKm);
+
+        //update delivery entity with others informations
+        delivery.distanceInKm = distanceInKm;
+        delivery.deliveryStartDateTime = firebase.firestore.Timestamp.fromDate(delivery.deliveryStartDateTime);
         delivery.createDate = firebase.firestore.FieldValue.serverTimestamp();
         delivery.updateDate = firebase.firestore.FieldValue.serverTimestamp();
 
-        //Get collection
-        var deliveries = database.collection("deliveries");
+        //Calculate delivery cost and save delevery in database
+        var cost = calculateDeliveryCost(distanceInKm);
 
-        //create empty doc with generate id
-        var newDocRef = deliveries.doc();
+        console.log("This delivery cost is:" + cost);
 
-        //add delivery to doc
-        newDocRef.set(delivery, {
-                merge: false
-            })
-            .then(savedDelivery => {
-                console.log("Delivery successfully written wih id :" + savedDelivery.id);
-                resolve(savedDelivery);
-            })
-            .catch(error => {
-                console.error("Error writing delivery: ", error);
-                reject(error);
+        if (cost.deliveryPrice !== null && cost.deliveryFee !== null) {
+            delivery.deliveryPrice = cost.deliveryPrice;
+            delivery.deliveryFee = cost.deliveryFee;
 
-            });
+            //create delivery in firestore
+            database.collection("deliveries")
+                .add(delivery)
+                .then(docRef => {
+                    console.log("Delivery successfully written wih id :" + docRef.id);
+                    resolve(docRef.id);
+                })
+                .catch(error => {
+                    console.error("Error writing delivery: ", error);
+                    reject(error);
+                });
+        }
     });
 }
-
 
 
 /**
- * Calculate delivery cost
- * @param {*} delivery delevery to calculate cost
+ * Calculate delivery cost by distance 
+ * @param {number} distanceInKm delivery distance.
+ * @returns the delivery cost
  */
-export function calculateDeliveryCost(delivery) {
+function calculateDeliveryCost(distanceInKm) {
 
-    return new Promise((resolve, reject) => {
+    //Get price policies
+    let pricePoliciesRef = database.collection("pricePolicies").where("active", "==", true);
 
-        //Calculate distance between two geoPoint
-        var distanceInKm = geolib.getDistance(delivery.startAddressGeoPoint, delivery.endAddressGeoPoint);
+    pricePoliciesRef.get()
+        .then(doc => {
 
-        //Get price policies
-        var docRef = database.collection("pricePolicies").where("active", "==", true).limit(1);
-        docRef
-            .get()
-            .then(activePricePolicy => {
+            //if price exists, get price policy
+            if (doc.exists) {
 
-                //if price exists, do calculation
-                if (activePricePolicy.exists) {
+                //Calculate delivery cost                        
+                let currentDeliveryPrice = doc.data().deliveryPrice * distanceInKm;
+                let currentDeliveryFee = doc.data().deliveryFee * distanceInKm;
 
-                    //Calculate delivery cost
-                    var currentDeliveryPrice = activePricePolicy.deliveryPrice * distanceInKm;
-                    var currentDeliveryFee = activePricePolicy.deliveryFee * distanceInKm;
+                console.log("currentDeliveryPrice:", currentDeliveryPrice);
+                let cost = {
+                    "deliveryPrice": currentDeliveryPrice,
+                    "deliveryFee": currentDeliveryFee
+                };
 
-                    resolve({
-                        cost: {
-                            "price": currentDeliveryPrice,
-                            "fee": currentDeliveryFee
-                        }
-                    });
+                return cost;
+            }
+        }).catch(error => {
+            console.error("Error getting document:", error);
 
-                }
-            })
-            .catch(error => {
-                reject(error);
-            });
-    });
+            return error;
+        });
 }
+
+
 
 /**
  * 
