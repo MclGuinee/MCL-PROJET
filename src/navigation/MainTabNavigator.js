@@ -9,13 +9,14 @@ import {
 import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 /* Icons */
-import { HomeIcon } from '../icons/homeIcon';
+// import { HomeIcon } from '../icons/homeIcon';
+import { Ionicons } from '@expo/vector-icons';
 import { ProfileIcon } from '../icons/profileIcon';
 
 const MainTabNavigationIcon = (tintColor, type) => {
   switch(type) {
     case 'home':
-    return <HomeIcon color={tintColor} />;
+    return <Ionicons color={tintColor} name="md-home" ios="ios-home-outline" size={32} />;
     case 'profile': 
     return <ProfileIcon color={tintColor} />
   }
