@@ -7,6 +7,7 @@ import {
 
 /* Screens */
 import HomeScreen from '../screens/HomeScreen';
+import OrderScreen from '../screens/OrderScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 /* Icons */
 // import { HomeIcon } from '../icons/homeIcon';
@@ -15,8 +16,7 @@ import { ProfileIcon } from '../icons/profileIcon';
 
 const MainTabNavigationIcon = (tintColor, type) => {
   switch(type) {
-    case 'home':
-    return <Ionicons color={tintColor} name="md-home" ios="ios-home-outline" size={32} />;
+    case 'home': return <Ionicons color={tintColor} name="md-home" ios="ios-home-outline" size={32} />;
     case 'profile': 
     return <ProfileIcon color={tintColor} />
   }
@@ -28,6 +28,12 @@ export const MainTabNavigation = createMaterialTopTabNavigator(
       screen: HomeScreen,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor, 'home')
+      }
+    },
+    Order: {
+      screen: OrderScreen,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor, 'order')
       }
     },
     Profile: {
@@ -68,7 +74,7 @@ const mainApp = createSwitchNavigator(
   {
     //Login: LoginStack,
     App: MainTabNavigation,
-  },
+  }//,
   /* {
     initialRouteName: 'Login'
   }  */

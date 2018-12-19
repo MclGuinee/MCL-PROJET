@@ -1,67 +1,37 @@
 
 import React from 'react';
 import { HeaderTab } from '../headerTab/headerTab';
-import { TextInput} from 'react-native';
-import { Container, Header, Content, Form, Item, ListItem, Input,
-  CheckBox, Body, Text, Label, DatePicker, Button } from 'native-base';
-  // import { Ionicons } from '@expo/vector-icons';
-  export default class HomeScreen extends React.Component {
-    state = {
-      isAllerRoundTrip: false,
-    }
-    toggleCheckBox = () => {
-      this.setState({isAllerRoundTrip: !this.state.isAllerRoundTrip})
-    }
-    render() {
-      return (
-        <Container style={{flex: 1}}>
-          <HeaderTab title="Commande" />
-  
-          <Content>
-          <Form>
-          <Item floatingLabel>
-            <Label>Adresse Restaurand</Label>
-            <Input />
-          </Item>
-          <Item floatingLabel last>
-            <Label>Adresse Livraison</Label>
-            <Input />
-          </Item>
-          <Item floatingLabel last>
-            <Label>Phone</Label>
-            <TextInput keyboardType = 'number-pad'/> 
-          </Item>
-          <Item>
-          <Label>Date d'enlevement</Label>
-            <DatePicker
-            defaultDate={new Date(2018, 4, 4)}
-            minimumDate={new Date(2018, 1, 1)}
-            maximumDate={new Date(2018, 12, 31)}
-            locale={"fr"}
-            timeZoneOffsetInMinutes={undefined}
-            modalTransparent={true}
-            animationType={"fade"}
-            androidMode={"default"}
-            textStyle={{ color: "grey" }}
-            placeHolderTextStyle={{ color: "#d3d3d3" }} /> 
-            </Item>
-            <ListItem button onPress={() => this.toggleCheckBox()}> 
-            <CheckBox 
-             checked={this.state.isAllerRoundTrip}
-             color="green"
-             name="checkbox-outline"
-             ios="ios-checkbox-outline" md="md-checkbox-outline"
-             onPress={() => this.toggleCheckBox()}/>
-            <Body>
-              <Text>Je Souhaite un aller-retour</Text>
-            </Body>
-            </ListItem>
-            <Button success  style={{marginTop: 45, marginLeft: 100, color: '#03C136'}}>
-            <Text>Commander</Text>
-            </Button>
-        </Form>
-          </Content>
-        </Container>
-      );
-    }
+import { Image, Alert } from 'react-native';
+import { Container, H1, H3, Content, Card, CardItem, Text, Body } from 'native-base';
+
+
+export default class HomeScreen extends React.Component {
+  render(){
+    return (
+      <Container style={{flex: 1}}>
+        <HeaderTab title="Accueil" />
+        <Content>
+        
+          <H1>Bienvenue sur MCL</H1>
+          <H1>Que souhaitez-vous commander aujoourd'hui?</H1>
+             
+          <Card>
+          <CardItem button onPress={() => this.props.navigation.navigate('Order')}>
+              <Image style={{ resizeMode: 'cover' }} source={require('../images/repasfaitmaon-170x112.jpg')} /> 
+             
+              <Text>
+                Votre repas fait maison
+              </Text>              
+          </CardItem>
+          <CardItem button onPress={() => Alert.alert('Vous pourrez commander dans votre restaurant très bientôt')}>
+              <Image style={{ resizeMode: 'cover' }} source={require('../images/repasrestau-160x90.jpg')} /> 
+              <Text>
+                Le repas de votre restaurant préféré.
+              </Text>              
+          </CardItem>
+          </Card>
+        </Content>
+      </Container>
+    );
   }
+}
