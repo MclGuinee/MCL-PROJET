@@ -1,0 +1,64 @@
+import React from 'react';
+import {
+  SafeAreaView,
+  View
+} from 'react-native';
+import {Font,AppLoading} from 'expo';
+import MainApp from './src/navigation/MainTabNavigator';
+import { Root } from "native-base";
+import { Font, AppLoading } from "expo";
+
+export default class App extends React.Component {
+<<<<<<< HEAD
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true
+    };
+=======
+  
+  constructor(props) {
+    super(props);
+    this.state = { loading: true };
+>>>>>>> Etablissement navigation entre écran
+  }
+
+  async componentWillMount() {
+    await Font.loadAsync({
+      Roboto: require("native-base/Fonts/Roboto.ttf"),
+<<<<<<< HEAD
+      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
+      Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
+    });
+    this.setState({
+      loading: false
+    });
+  }
+  render() {
+    if (this.state.loading) {
+      return <AppLoading /> ;
+    }
+    return ( 
+      <SafeAreaView style = {{flex: 1}} >
+         <MainApp />
+      </SafeAreaView>
+=======
+      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
+    }).then( () => {
+      this.setState({ loading: false });
+    });
+    
+  }
+
+  render() {
+    if (this.state.loading) {
+      return <AppLoading />;
+    }
+     return (
+        <SafeAreaView style={{ flex: 1 }}>
+          <MainApp />
+        </SafeAreaView>
+>>>>>>> Etablissement navigation entre écran
+    );
+  }
+}
