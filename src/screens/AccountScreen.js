@@ -8,9 +8,8 @@ export default class AccountScreen extends React.Component {
     render() {
       return (
         <Container style={{flex: 1}}>
-          <HeaderTab title="Authentification" />  
-          <Content>
-            <Container>
+            <HeaderTab title="Accueil" />
+        <Content>
               <Header hasTabs />
               <Tabs>
                 <Tab heading="Se connecter">
@@ -19,9 +18,8 @@ export default class AccountScreen extends React.Component {
                 <Tab heading="Créer un compte">
                   <RegisterTab />
                 </Tab>         
-              </Tabs>
-            </Container>
-          </Content>
+              </Tabs>     
+              </Content>
         </Container>
       );
     }

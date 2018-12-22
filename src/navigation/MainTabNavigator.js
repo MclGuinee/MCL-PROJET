@@ -13,6 +13,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 // import { HomeIcon } from '../icons/homeIcon';
 import { Ionicons } from '@expo/vector-icons';
 import { ProfileIcon } from '../icons/profileIcon';
+import AccountScreen from '../screens/AccountScreen';
 
 const MainTabNavigationIcon = (tintColor, type) => {
   switch(type) {
@@ -40,6 +41,12 @@ export const MainTabNavigation = createMaterialTopTabNavigator(
       screen: ProfileScreen,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor, 'profile')
+      }
+    },
+    Account: {
+      screen: AccountScreen,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor )
       }
     },
   },
