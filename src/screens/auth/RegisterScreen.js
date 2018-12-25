@@ -2,7 +2,7 @@ import React from 'react';
 import { TextInput} from 'react-native';
 import { Container, Header, Content, Form, Item, ListItem, Input,
   CheckBox, Body, Text, Label, DatePicker, Button } from 'native-base';
-  export default class HomeScreen extends React.Component {
+  export default class RegisterScreen extends React.Component {
     state = {
       isAllerRoundTrip: false,
     }

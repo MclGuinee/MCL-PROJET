@@ -7,3 +7,5 @@ npm-debug.*
 *.mobileprovision
 firebase-constants.js
 *.orig
+*.zip
+*.vscode

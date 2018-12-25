@@ -13,7 +13,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 // import { HomeIcon } from '../icons/homeIcon';
 import { Ionicons } from '@expo/vector-icons';
 import { ProfileIcon } from '../icons/profileIcon';
-import AccountScreen from '../screens/AccountScreen';
+import AccountScreen from '../screens/auth/AccountScreen';
 
 const MainTabNavigationIcon = (tintColor, type) => {
   switch(type) {
