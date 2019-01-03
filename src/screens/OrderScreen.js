@@ -48,7 +48,7 @@ import { Container, Header, Content, Form, Item, ListItem, Input,
             <Button success  
             style={{marginTop: 45, marginLeft: 100, color: '#03C136'}}
             onPress={() => this.props.navigation.navigate('Account')}>
-            <Text>Commander</Text>
+            <Text>COMMANDER</Text>
             </Button>
         </Form>
           </Content>

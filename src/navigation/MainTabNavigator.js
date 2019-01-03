@@ -6,7 +6,7 @@ import {
 } from 'react-navigation';
 
 /* Screens */
-import HomeScreen from '../screens/HomeScreen';
+import HomeScreen from '../screens/home/HomeScreen';
 import OrderScreen from '../screens/OrderScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 /* Icons */

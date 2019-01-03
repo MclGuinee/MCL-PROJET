@@ -1,39 +1,38 @@
 import {
 	StyleSheet
 } from 'react-native';
-import * as theme from "../../styles/theme";
 
 const styles = StyleSheet.create({
 	container: {
-		//flex: 1,
-		backgroundColor: theme.color.white,
+		backgroundColor: "#fff",
 		
 	},
 
 	errorText: {
-		color: theme.color.red,
+		color: "red",
 		// width: (windowWidth - 45),
 		marginTop: 20,
 	},
 
 	forgotPasswordAnchor: {
 		//justifyContent: flex - end,
-		color: theme.color.green
+		color: "green"
 	},
 
 	newAccountAnchor: {
-		//justifyContent: center,
-		color: theme.color.green
+		flexDirection: "row",
+		justifyContent: "center"
 	},
 
 	loginBtn: {
-		marginTop: 45,
-		color: theme.color.green
+		color:"green",
+		flexDirection: "row",
+		justifyContent: "center"
 	},
 
 	
 	accountTab: {
-		color: theme.color.grey,
+		color: "grey",
 		marginTop: 0,
 		paddingTop: 0
 	},

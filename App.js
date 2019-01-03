@@ -5,6 +5,9 @@ import {
 } from 'react-native';
 import {Font,AppLoading} from 'expo';
 import MainApp from './src/navigation/MainTabNavigator';
+import { StyleProvider } from "native-base";
+import getTheme from "./src/theme/components";
+import variables from "./src/theme/variables/commonColor";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -29,9 +32,11 @@ export default class App extends React.Component {
       return <AppLoading /> ;
     }
     return ( 
-      <SafeAreaView style = {{flex: 1}} >
-         <MainApp />
-      </SafeAreaView>
+      <StyleProvider style={getTheme(variables)}>
+        <SafeAreaView style = {{flex: 1}} >
+          <MainApp />
+        </SafeAreaView>
+      </StyleProvider>
     );
   }
 }
