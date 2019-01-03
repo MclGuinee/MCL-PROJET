@@ -5,9 +5,11 @@ import { Header, Left, Body, Right, Title, Button, Icon } from 'native-base';
 export const HeaderTab = ({ title }) => (
 
   <Header>
-    <Button transparent onPress={() => this.props.navigation.goBack()}>
-        <Icon name="arrow-back" />
-    </Button>
+    <Left>
+      <Button transparent onPress={() => this.props.navigation.goBack()}>
+          <Icon name="arrow-back" />
+      </Button>
+    </Left>
     <Body>
       <Title>{title}</Title>
     </Body>

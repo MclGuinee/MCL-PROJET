@@ -1,13 +1,10 @@
 export default {
 	container: {
-	  backgroundColor: "#FFF"
+		backgroundColor: "#FFF"
 	},
-	text: {
-	  alignSelf: "center",
-	  marginBottom: 7
+	cardStyle: {
+		marginBottom: 30
 	},
-	mb: {
-	  marginBottom: 30
-	}
-  };
-  
+
+	
+};

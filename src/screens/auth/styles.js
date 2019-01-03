@@ -8,16 +8,7 @@ const styles = StyleSheet.create({
 		
 	},
 
-	errorText: {
-		color: "red",
-		// width: (windowWidth - 45),
-		marginTop: 20,
-	},
-
-	forgotPasswordAnchor: {
-		//justifyContent: flex - end,
-		color: "green"
-	},
+	
 
 	newAccountAnchor: {
 		flexDirection: "row",

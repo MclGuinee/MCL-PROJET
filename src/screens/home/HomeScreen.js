@@ -4,19 +4,16 @@ import { HeaderTab } from '../../headerTab/headerTab';
 import { Image, Dimensions, Alert } from "react-native";
 import {
   Container,
-  Header,
-  Title,
   Content,
-  H1,H2,H3,
+  H3,
   Card,
   CardItem,
   Text,
-  Left,
-  Right,
   Body,
   View
 } from "native-base";
 import styles from "./styles";
+import globalStyles from "./../globalStyles";
 
 const deviceWidth = Dimensions.get("window").width;
 const repasFaitMaison = require("../../../assets/images/repasfaitmaison-170x112.jpg");
@@ -25,22 +22,16 @@ const repasRestau = require('../../../assets/images/repasrestau-160x90.jpg')
 export default class HomeScreen extends React.Component {
   render() {
     return (
-      <Container style={styles.container}>
+      <Container >
         <HeaderTab title="Accueil" />
-        <Content padder>
-        <View style={{
-          flex: 1,
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginVertical:15
-        }}>
-          <H3 style={{marginBotton :15}}>Bienvenue sur MCL, votre livreur de repas</H3>
-          <Text>Que souhaitez-vous commander aujourd'hui ?</Text>
+        <Content padder style={styles.container}>
+          <View style={[globalStyles.centerComponent,{ marginVertical:15}]}>
+            <H3 style={{marginBottom :15}}>Bienvenue sur MCL</H3>
+            <Text style={{textAlign:'center'}}>Que souhaitez-vous vous faire livrer aujourd'hui ?</Text>
           </View>
-          <Card style={[styles.mb]}>
+          <Card style={styles.cardStyle}>
             <CardItem button onPress={() => this.props.navigation.navigate('Order')}>
-              <Body>
+              <Body style={styles.centerComponent}>
                 <Image
                   style={{
                     alignSelf: "center",
@@ -51,7 +42,7 @@ export default class HomeScreen extends React.Component {
                   }}
                   source={repasFaitMaison}
                 />
-                <Text note>
+                <Text note >
                 Votre repas fait maison
                 </Text>
               </Body>
@@ -59,10 +50,10 @@ export default class HomeScreen extends React.Component {
             
           </Card>
 
-          <Card style={[styles.mb]}>
+          <Card style={[styles.cardStyle]}>
             
             <CardItem button onPress={() => Alert.alert('Vous pourrez commander dans votre restaurant très bientôt')}>
-              <Body>
+              <Body style={globalStyles.centerComponent}>
                 <Image
                   style={{
                     alignSelf: "center",
@@ -73,7 +64,7 @@ export default class HomeScreen extends React.Component {
                   }}
                   source={repasRestau}
                 />
-                <Text notes>
+                <Text note>
                 Le repas de votre restaurant préféré.
                 </Text>
               </Body>

@@ -113,6 +113,7 @@ export default {
   brandDark: "#000",
   brandLight: "#f4f4f4",
 
+
   //Container
   containerBgColor: "#fff",
 
@@ -149,7 +150,7 @@ export default {
 
   // Header
   toolbarBtnColor: platform === "ios" ? "#007aff" : "#fff",
-  toolbarDefaultBg: platform === "ios" ? "#F8F8F8" : "#3F51B5",
+  toolbarDefaultBg: "#5cb85c",//platform === "ios" ? "#F8F8F8" : "#3F51B5",
   toolbarHeight: platform === "ios" ? 64 : 56,
   toolbarSearchIconSize: platform === "ios" ? 20 : 23,
   toolbarInputColor: platform === "ios" ? "#CECDD2" : "#fff",
@@ -229,14 +230,14 @@ export default {
   inverseSpinnerColor: "#1A191B",
 
   // Tab
-  tabDefaultBg: platform === "ios" ? "#F8F8F8" : "#3F51B5",
+  tabDefaultBg: "#5E8D48",//platform === "ios" ? "#F8F8F8" : "#3F51B5",
   topTabBarTextColor: platform === "ios" ? "#6b6b6b" : "#b3c7f9",
-  topTabBarActiveTextColor: platform === "ios" ? "#007aff" : "#fff",
+  topTabBarActiveTextColor: "#03C136",//platform === "ios" ? "#007aff" : "#fff",
   topTabBarBorderColor: platform === "ios" ? "#a7a6ab" : "#fff",
   topTabBarActiveBorderColor: platform === "ios" ? "#007aff" : "#fff",
 
   // Tabs
-  tabBgColor: "#F8F8F8",
+  tabBgColor: "#fff",//"#F8F8F8",
   tabFontSize: 15,
 
   // Text
