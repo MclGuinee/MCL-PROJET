@@ -13,7 +13,7 @@ import {
   View
 } from "native-base";
 import styles from "./styles";
-import globalStyles from "./../globalStyles";
+import globalStyles from "../../theme/mclCommonStyles";
 
 const deviceWidth = Dimensions.get("window").width;
 const repasFaitMaison = require("../../../assets/images/repasfaitmaison-170x112.jpg");
@@ -25,13 +25,13 @@ export default class HomeScreen extends React.Component {
       <Container >
         <HeaderTab title="Accueil" />
         <Content padder style={styles.container}>
-          <View style={[globalStyles.centerComponent,{ marginVertical:15}]}>
+          <Body style={[globalStyles.centerComponent,{ marginVertical:15}]}>
             <H3 style={{marginBottom :15}}>Bienvenue sur MCL</H3>
             <Text style={{textAlign:'center'}}>Que souhaitez-vous vous faire livrer aujourd'hui ?</Text>
-          </View>
+          </Body>
           <Card style={styles.cardStyle}>
             <CardItem button onPress={() => this.props.navigation.navigate('Order')}>
-              <Body style={styles.centerComponent}>
+              <Body style={globalStyles.centerComponent}>
                 <Image
                   style={{
                     alignSelf: "center",

@@ -1,15 +1,12 @@
 import React from "react";
-import { Container, Form, Item, Input, Text, Label, Button, Right, View } from "native-base";
+import { Container, Form, Item, Input, Text, Label, Button, Right, View, Body } from "native-base";
 import styles from "./styles";
-import globalStyles from "./../globalStyles";
+import globalStyles from "./../../theme/mclCommonStyles"
 
 export default class LoginScreen extends React.Component {
-  state = {
-    email: "",
-    password: ""
-  };
 
   render() {
+    
     return (
       <Form>
         <Item floatingLabel>
@@ -20,28 +17,24 @@ export default class LoginScreen extends React.Component {
           <Label>Mot de passe</Label>
           <Input secureTextEntry={true} />
         </Item>
-        {/* <Button transparent  
-          style={styles.forgotPasswordAnchor} 
-          onPress={() => this.props.navigation.navigate('login')}>
-            <Text>Mot de passe oublié ?</Text>
-          </Button> */}
-        <View style={[globalStyles.centerComponent, { marginVertical: 30 }]}>
-          <View>
-            <Button success>
-              <Text>Se connecter </Text>
-            </Button>
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <View>
-              <Text>Nouveau sur mcl?</Text>
-            </View>
-            <View>
-              <Button transparent onPress={() => this.changeActiveTab()}>
-                <Text>Créer un compte</Text>
-              </Button>
-            </View>
-          </View>
-        </View>
+
+        <Body style={[globalStyles.rightComponent,globalStyles.btn]}>
+          <Button transparent success 
+          onPress={() => this.props.navigation.navigate('ForgotPassword')} >
+            <Text>Mot de passe oublié?</Text>
+          </Button>
+        </Body>
+        <Body style={[globalStyles.centerComponent, globalStyles.btn]}>
+          <Button success>
+            <Text>Se connecter </Text>
+          </Button>
+        </Body>
+        <Body style={[globalStyles.centerComponent, { flexDirection: "row" }]}>
+          <Text>Nouveau sur mcl?</Text>
+          <Button transparent success onPress={() => this.changeActiveTab()}>
+            <Text style={{ paddingLeft: 5 }}>Créer un compte</Text>
+          </Button>
+        </Body>
       </Form>
     );
   }

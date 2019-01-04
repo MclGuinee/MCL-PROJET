@@ -1,6 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
-import { Button, Container, Content, Form, Input, Item, Label, Text } from "native-base";
+import { Button, Container, Content, Form, Input, Item, Label, Text , Body} from "native-base";
 import React from "react";
+import globalStyles from "./../../theme/mclCommonStyles"
 
 export default class RegisterScreen extends React.Component {
   render() {
@@ -17,15 +18,11 @@ export default class RegisterScreen extends React.Component {
               <Input />
             </Item>
             <Item floatingLabel>
-              <Ionicons name="md-at" />
+              <Label>Email*</Label>
               <Input />
             </Item>
             <Item floatingLabel>
-              {/* <Ionicons  name="md-phone" /> */}
-              <Input />
-            </Item>
-            <Item floatingLabel>
-              <Label>Mot de passe * </Label>
+              <Label>Mot de passe* </Label>
               <Input secureTextEntry={true} />
             </Item>
             <Item floatingLabel last>
@@ -33,9 +30,11 @@ export default class RegisterScreen extends React.Component {
               <Input secureTextEntry={true} />
             </Item>
 
-            <Button success>
-              <Text>VALIDER</Text>
-            </Button>
+            <Body style={[globalStyles.centerComponent, globalStyles.btn]}>
+              <Button success>
+                <Text>VALIDER</Text>
+              </Button>
+            </Body>
           </Form>
         </Content>
       </Container>

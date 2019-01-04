@@ -113,7 +113,6 @@ export default {
   brandDark: "#000",
   brandLight: "#f4f4f4",
 
-
   //Container
   containerBgColor: "#fff",
 
@@ -230,11 +229,11 @@ export default {
   inverseSpinnerColor: "#1A191B",
 
   // Tab
-  tabDefaultBg: "#5E8D48",//platform === "ios" ? "#F8F8F8" : "#3F51B5",
-  topTabBarTextColor: platform === "ios" ? "#6b6b6b" : "#b3c7f9",
-  topTabBarActiveTextColor: "#03C136",//platform === "ios" ? "#007aff" : "#fff",
+  tabDefaultBg: "#fff",//platform === "ios" ? "#F8F8F8" : "#3F51B5",
+  topTabBarTextColor: "#6b6b6b",//platform === "ios" ? "#6b6b6b" : "#b3c7f9",
+  topTabBarActiveTextColor: "#000" ,//platform === "ios" ? "#007aff" : "#fff",
   topTabBarBorderColor: platform === "ios" ? "#a7a6ab" : "#fff",
-  topTabBarActiveBorderColor: platform === "ios" ? "#007aff" : "#fff",
+  topTabBarActiveBorderColor: "#5cb85c",//platform === "ios" ? "#007aff" : "#fff",
 
   // Tabs
   tabBgColor: "#fff",//"#F8F8F8",
