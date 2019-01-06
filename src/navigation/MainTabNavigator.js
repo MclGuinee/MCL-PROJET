@@ -3,13 +3,14 @@ import { createSwitchNavigator, createStackNavigator, createMaterialTopTabNaviga
 
 /* Screens */
 import HomeScreen from "../screens/home/HomeScreen";
-import OrderScreen from "../screens/OrderScreen";
+import OrderScreen from "../screens/order/OrderScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import AccountScreen from "../screens/auth/AccountScreen";
 import ForgotPasswordScreen from "../screens/auth/ForgotPassword";
 /* Icons */
 import { Ionicons } from "@expo/vector-icons";
 import { ProfileIcon } from "../icons/profileIcon";
+
 
 const MainTabNavigationIcon = (tintColor, type) => {
   switch (type) {
@@ -56,7 +57,7 @@ export const MainTabNavigation = createMaterialTopTabNavigator(
       showLabel: false,
       showIcon: true,
       style: {
-        backgroundColor: "#f5f7f9",
+        backgroundColor: "#f5f5f0",
         height: 60,
         padding: 5,
         borderTopWidth: 0.4
