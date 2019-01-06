@@ -1,9 +1,9 @@
 import React from "react";
 import { Container, Content, Form, Item, Input, Text, Label, Button, Right, Body, Header, Left, Icon, Title, H3 } from "native-base";
 import styles from "./styles";
-import globalStyles from "../../theme/mclCommonStyles";
+import  {globalColors, commonStyles} from "../screens-util/commonStyles"
 
-export default class ForgotPassword extends React.Component {
+export default class ForgotPwdScreen extends React.Component {
   render() {
     return (
       <Container style={styles.container}>
@@ -19,7 +19,7 @@ export default class ForgotPassword extends React.Component {
           <Right />
         </Header>
         <Content>
-          <Body style={[globalStyles.centerComponent, { marginVertical: 15 , textAlign:'center'}]}>
+          <Body style={[commonStyles.centerComponent, { marginVertical: 15 , textAlign:'center'}]}>
             <H3>Vous avez oublié votre mot de passe! </H3>
             <H3>
               Pas de panique, saisisser votre adresse email, nous allons vous envoyer un nouveau mot de passe. Vous vous connectez avec ce nouveau mot de passe et le changer plus
@@ -32,7 +32,7 @@ export default class ForgotPassword extends React.Component {
               <Input />
             </Item>
 
-            <Body style={[globalStyles.centerComponent]}>
+            <Body style={[commonStyles.centerComponent]}>
               <Button success onPress={() => Alert.alert("Nouveau mot de passe généré et envoyé à test@test.fr")}>
                 <Text>Mot de passe oublié?</Text>
               </Button>

@@ -1,4 +1,11 @@
-export default {
+import { StyleSheet } from "react-native";
+
+const globalColors = {
+  green: "#5cb85c",
+  gray: "#f5f5f0"
+};
+
+const commonStyles = StyleSheet.create({
   headerContainer: {
     marginTop: 10
   },
@@ -16,16 +23,10 @@ export default {
     justifyContent: "flex-end"
   },
 
-
   btn: {
     marginTop: 30
-  },
-
-  colorGreen: {
-    color: "#5cb85c"
-  },
-
-  colorGray: {
-    gray: "#f5f5f0" //ou "#f5f7f9"
   }
-};
+});
+
+export {globalColors, commonStyles}
+

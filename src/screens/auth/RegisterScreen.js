@@ -1,7 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Button, Container, Content, Form, Input, Item, Label, Text , Body} from "native-base";
 import React from "react";
-import globalStyles from "./../../theme/mclCommonStyles"
+import  {globalColors, commonStyles} from "../screens-util/commonStyles"
 
 export default class RegisterScreen extends React.Component {
   render() {
@@ -30,7 +30,7 @@ export default class RegisterScreen extends React.Component {
               <Input secureTextEntry={true} />
             </Item>
 
-            <Body style={[globalStyles.centerComponent, globalStyles.btn]}>
+            <Body style={[commonStyles.centerComponent, commonStyles.btn]}>
               <Button success>
                 <Text>VALIDER</Text>
               </Button>

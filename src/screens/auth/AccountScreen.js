@@ -1,8 +1,16 @@
+/*Standart modules imports*/
 import React from "react";
 import { HeaderTab } from "../../headerTab/headerTab";
 import { Container, Header, Content, Tab, Tabs, Left, Icon, Body, Title, Button, Right } from "native-base";
+import StepIndicator from "react-native-step-indicator";
+
+/*Custom imports*/
 import LoginTab from "./LoginScreen";
 import RegisterTab from "./RegisterScreen";
+import { stepIndicatorLabels, stepIndicatorStyles } from "../screens-util/stepIndicatorProperties";
+
+
+/*styles*/
 import styles from "./styles";
 
 export default class AccountScreen extends React.Component {
@@ -30,6 +38,8 @@ export default class AccountScreen extends React.Component {
           <Right />
         </Header>
         <Content>
+          <StepIndicator customStyles={stepIndicatorStyles} currentPosition={1} labels={stepIndicatorLabels} stepCount={4} direction="horizontal" />
+
           <Tabs initialPage={this.state.activeTabValue}>
             <Tab heading="Se connecter" style={styles.loginTab}>
               <LoginTab />

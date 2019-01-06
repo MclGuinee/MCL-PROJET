@@ -6,10 +6,15 @@ import HomeScreen from "../screens/home/HomeScreen";
 import OrderScreen from "../screens/order/OrderScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import AccountScreen from "../screens/auth/AccountScreen";
-import ForgotPasswordScreen from "../screens/auth/ForgotPassword";
+import ForgotPwdScreen from "../screens/auth/ForgotPwdScreen";
+import OrderSummaryScreen from '../screens/order/OrderSummaryScreen'
+
 /* Icons */
 import { Ionicons } from "@expo/vector-icons";
 import { ProfileIcon } from "../icons/profileIcon";
+
+/*Styles*/
+import  {globalColors, commonStyles} from "../screens/screens-util/commonStyles"
 
 
 const MainTabNavigationIcon = (tintColor, type) => {
@@ -32,18 +37,21 @@ export const MainTabNavigation = createMaterialTopTabNavigator(
     Order: {
       screen: OrderScreen
     },
+    OrderSummary: {
+      screen: OrderSummaryScreen
+    },   
+    Account: {
+      screen: AccountScreen
+    },
+    ForgotPwd: {
+      screen: ForgotPwdScreen
+    },
     Profile: {
       screen: ProfileScreen,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor, "profile")
       }
     },
-    Account: {
-      screen: AccountScreen
-    },
-    ForgotPassword: {
-      screen: ForgotPasswordScreen
-    }
   },
 
   {
@@ -51,8 +59,8 @@ export const MainTabNavigation = createMaterialTopTabNavigator(
     swipeEnabled: true,
     animationEnabled: false,
     tabBarOptions: {
-      activeTintColor: "#5cb85c",
-      inactiveTintColor: "#464646",
+      activeTintColor: "#5cb85c",//{globalColors.green},
+      inactiveTintColor: "#464646",//{globalColors.grays},
       shiftting: true,
       showLabel: false,
       showIcon: true,

@@ -6,7 +6,7 @@ import { Container, Content, H3, Header, Left, Right, Title,Card, CardItem, Text
 
 /*Styles*/
 import styles from "./styles";
-import globalStyles from "../../theme/mclCommonStyles";
+import  {globalColors, commonStyles} from "../screens-util/commonStyles"
 
 /*Constantes*/
 const deviceWidth = Dimensions.get("window").width;
@@ -26,13 +26,13 @@ export default class HomeScreen extends React.Component {
           <Right />
         </Header>
         <Content padder>
-          <Body style={[globalStyles.centerComponent, { marginVertical: 15 }]}>
+          <Body style={[commonStyles.centerComponent, { marginVertical: 15 }]}>
             <H3 style={{ marginBottom: 15 }}>Bienvenue sur MCL</H3>
             <Text style={{ textAlign: "center" }}>Que souhaitez-vous vous faire livrer aujourd'hui ?</Text>
           </Body>
           <Card style={styles.cardStyle}>
             <CardItem button onPress={() => this.props.navigation.navigate("Order")}>
-              <Body style={globalStyles.centerComponent}>
+              <Body style={commonStyles.centerComponent}>
                 <Image
                   style={{
                     alignSelf: "center",
@@ -50,7 +50,7 @@ export default class HomeScreen extends React.Component {
 
           <Card style={[styles.cardStyle]}>
             <CardItem button onPress={() => Alert.alert("Vous pourrez commander dans votre restaurant très bientôt")}>
-              <Body style={globalStyles.centerComponent}>
+              <Body style={commonStyles.centerComponent}>
                 <Image
                   style={{
                     alignSelf: "center",

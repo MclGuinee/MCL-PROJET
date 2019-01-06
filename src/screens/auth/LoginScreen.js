@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Form, Item, Input, Text, Label, Button, Right, View, Body } from "native-base";
 import styles from "./styles";
-import globalStyles from "./../../theme/mclCommonStyles";
+import  {globalColors, commonStyles} from "../screens-util/commonStyles"
 
 export default class LoginScreen extends React.Component {
   render() {
@@ -16,14 +16,14 @@ export default class LoginScreen extends React.Component {
           <Input secureTextEntry={true} />
         </Item>
 
-        <Body style={[globalStyles.centerComponent, globalStyles.btn]}>
+        <Body style={[commonStyles.centerComponent, commonStyles.btn]}>
           <Button success>
             <Text>Se connecter </Text>
           </Button>
         </Body>
 
-        <Body style={[globalStyles.rightComponent, globalStyles.btn]}>
-          <Button transparent success onPress={() => this.props.navigation.navigate("ForgotPassword")}>
+        <Body style={[commonStyles.rightComponent, commonStyles.btn]}>
+          <Button transparent success onPress={() => this.props.navigation.navigate("ForgotPwd")}>
             <Text>Mot de passe oublié?</Text>
           </Button>
         </Body>

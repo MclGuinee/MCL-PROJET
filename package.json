@@ -20,6 +20,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
     "react-native-datepicker": "^1.7.2",
     "react-native-phone-input": "^0.2.1",
+    "react-native-step-indicator": "0.0.9",
     "react-navigation": "^2.18.2",
     "react-navigation-material-bottom-tabs": "^0.4.0"
   },
