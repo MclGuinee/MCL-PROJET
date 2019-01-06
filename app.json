@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "MCL - Mon Coursier Local",
-    "description": "Livraison de vos repas",
+    "name": "MCL",
+    "description": "A very interesting project.",
     "slug": "MCL",
     "privacy": "public",
     "sdkVersion": "31.0.0",
