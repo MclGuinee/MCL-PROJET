@@ -7,7 +7,8 @@ import OrderScreen from "../screens/order/OrderScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import AccountScreen from "../screens/auth/AccountScreen";
 import ForgotPwdScreen from "../screens/auth/ForgotPwdScreen";
-import OrderSummaryScreen from '../screens/order/OrderSummaryScreen'
+import OrderSummaryScreen from '../screens/order/OrderSummaryScreen';
+import OrderAddressMapScreen from "../screens/maps/OrderAddressMapScreen";
 
 /* Icons */
 import { Ionicons } from "@expo/vector-icons";
@@ -45,6 +46,9 @@ export const MainTabNavigation = createMaterialTopTabNavigator(
     },
     ForgotPwd: {
       screen: ForgotPwdScreen
+    },
+    OrderAddressMap : {
+      screen : OrderAddressMapScreen
     },
     Profile: {
       screen: ProfileScreen,

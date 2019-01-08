@@ -1,8 +1,14 @@
+import { StyleSheet } from "react-native";
 
-export default {
-	container: {
-		flex:1,
-		backgroundColor: "#FFF"
-	}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff"
+  },
 
-};
+  cardStyle: {
+    marginBottom: 30
+  }
+});
+
+export { styles };

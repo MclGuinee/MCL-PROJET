@@ -7,7 +7,7 @@ import { Container, Header, Content, Left, Right, Title, Form, Item, ListItem, I
 import StepIndicator from "react-native-step-indicator";
 
 /*Styles*/
-import styles from "./styles";
+import {styles} from "./styles";
 import { globalColors, commonStyles } from "../screens-util/commonStyles";
 
 /*Custom imports*/
@@ -29,7 +29,7 @@ export default class OrderScreen extends React.Component {
   render() {
     return (
       <Container style={styles.container}>
-        <Header hasTabs>
+        <Header>
           <Left>
             <Button transparent onPress={() => this.props.navigation.goBack()}>
               <Icon name="arrow-back" />
@@ -65,7 +65,7 @@ export default class OrderScreen extends React.Component {
               <Button
                 transparent
                 success
-                //onPress={() => this.props.navigation.navigate('addressMap')}
+                onPress={() => this.props.navigation.navigate('OrderAddressMap')}
               >
                 <Icon active ios="ios-add-circle" android="md-add-circle" />
               </Button>
@@ -91,7 +91,7 @@ export default class OrderScreen extends React.Component {
               <Button
                 transparent
                 success
-                //onPress={() => this.props.navigation.navigate('addressMap')}
+                onPress={() => this.props.navigation.navigate('OrderAddressMap')}
               >
                 <Icon active ios="ios-add-circle" android="md-add-circle" />
               </Button>

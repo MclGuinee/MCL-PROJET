@@ -5,7 +5,7 @@ import { Image, Dimensions, Alert } from "react-native";
 import { Container, Content, H3, Header, Left, Right, Title,Card, CardItem, Text, Body} from "native-base";
 
 /*Styles*/
-import styles from "./styles";
+import {styles} from "./styles";
 import  {globalColors, commonStyles} from "../screens-util/commonStyles"
 
 /*Constantes*/

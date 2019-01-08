@@ -11,7 +11,7 @@ import { stepIndicatorLabels, stepIndicatorStyles } from "../screens-util/stepIn
 
 
 /*styles*/
-import styles from "./styles";
+import {styles} from "./styles";
 
 export default class AccountScreen extends React.Component {
   state = {

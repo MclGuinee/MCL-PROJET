@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Form, Item, Input, Text, Label, Button, Right, View, Body } from "native-base";
-import styles from "./styles";
 import  {globalColors, commonStyles} from "../screens-util/commonStyles"
 
 export default class LoginScreen extends React.Component {
