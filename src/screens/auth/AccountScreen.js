@@ -15,7 +15,8 @@ import {styles} from "./styles";
 
 export default class AccountScreen extends React.Component {
   state = {
-    activeTabValue: 0
+    activeTabValue: 0,    
+    navigation: this.props.navigation
   };
   changeActiveTab = () => {
     if (this.state.Option == 0) {

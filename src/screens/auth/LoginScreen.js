@@ -16,7 +16,8 @@ export default class LoginScreen extends React.Component {
         </Item>
 
         <Body style={[commonStyles.centerComponent, commonStyles.btn]}>
-          <Button success>
+          <Button success
+          onPress={() => props.navigation.navigate("Payment")}>
             <Text>Se connecter </Text>
           </Button>
         </Body>

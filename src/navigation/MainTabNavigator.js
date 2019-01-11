@@ -9,6 +9,8 @@ import AccountScreen from "../screens/auth/AccountScreen";
 import ForgotPwdScreen from "../screens/auth/ForgotPwdScreen";
 import OrderSummaryScreen from '../screens/order/OrderSummaryScreen';
 import OrderAddressMapScreen from "../screens/maps/OrderAddressMapScreen";
+import PaymentScreen from '../screens/payment/PaymentScreen';
+import ConfirmationScreen from '../screens/payment/ConfirmationScreen';
 
 /* Icons */
 import { Ionicons } from "@expo/vector-icons";
@@ -16,6 +18,7 @@ import { ProfileIcon } from "../icons/profileIcon";
 
 /*Styles*/
 import  {globalColors, commonStyles} from "../screens/screens-util/commonStyles"
+
 
 
 const MainTabNavigationIcon = (tintColor, type) => {
@@ -49,6 +52,12 @@ export const MainTabNavigation = createMaterialTopTabNavigator(
     },
     OrderAddressMap : {
       screen : OrderAddressMapScreen
+    },
+    Payment:{
+      screen : PaymentScreen
+    },
+    Confirmation:{
+      screen : ConfirmationScreen
     },
     Profile: {
       screen: ProfileScreen,

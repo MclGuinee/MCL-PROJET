@@ -33,23 +33,18 @@ export default class OrderSummaryScreen extends React.Component {
           <StepIndicator customStyles={stepIndicatorStyles} currentPosition={0} labels={stepIndicatorLabels} stepCount={4} direction="horizontal" />
           <List>
             <ListItem itemDivider>
-              <Text>Adresses</Text>
+              <Text>Informations de livraison</Text>
             </ListItem>
             <ListItem>
-              <Label>Adresse d'enlèvement:</Label>
+              <Label>De:</Label>
               <Text>Domicile</Text>
             </ListItem>
             <ListItem>
-              <Text>Adresse de livraison:</Text>
+              <Text>A:</Text>
               <Text>Bureau</Text>
-            </ListItem>
-            <ListItem>
-              <Text>Distance:</Text>
-              <Text>30</Text>
-              <Text>KM</Text>
-            </ListItem>
+            </ListItem>            
             <ListItem last>
-              <Text>Date et heure d'enlèvement:</Text>
+              <Text>Le : </Text>
               <Text>01 01 2019 12h00</Text>
             </ListItem>
             <ListItem itemDivider>
@@ -61,7 +56,7 @@ export default class OrderSummaryScreen extends React.Component {
               <Text>FG</Text>
             </ListItem>
             <ListItem>
-              <Text>Frais de livraison:</Text>
+              <Text>Frais MCL:</Text>
               <Text>5000</Text>
               <Text>FG</Text>
             </ListItem>

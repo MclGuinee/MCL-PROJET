@@ -25,6 +25,14 @@ const commonStyles = StyleSheet.create({
 
   btn: {
     marginTop: 30
+  },
+
+  line : {
+      borderBottomColor: '#5cb85c',
+      borderBottomWidth: 3,
+      width: '100%',
+      marginHorizontal: 5,
+      fontWeight: 'bold'
   }
 });
 
