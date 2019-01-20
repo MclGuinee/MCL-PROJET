@@ -26,7 +26,7 @@ const MainTabNavigationIcon = (tintColor, type) => {
     case "home":
       return <Ionicons color={tintColor} name="md-home" ios="ios-home-outline" size={32} />;
     case "profile":
-      return <ProfileIcon color={tintColor} />;
+      return <ProfileIcon color={tintColor} />;    
   }
 };
 

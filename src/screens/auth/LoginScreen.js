@@ -1,9 +1,13 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { Container, Form, Item, Input, Text, Label, Button, Right, View, Body } from "native-base";
 import  {globalColors, commonStyles} from "../screens-util/commonStyles"
 
 export default class LoginScreen extends React.Component {
   render() {
+
+    const { navigation } = this.props;
+
     return (
       <Form>
         <Item floatingLabel>
@@ -17,13 +21,13 @@ export default class LoginScreen extends React.Component {
 
         <Body style={[commonStyles.centerComponent, commonStyles.btn]}>
           <Button success
-          onPress={() => props.navigation.navigate("Payment")}>
+          onPress={() => navigation.navigate("Payment")}>
             <Text>Se connecter </Text>
           </Button>
         </Body>
 
         <Body style={[commonStyles.rightComponent, commonStyles.btn]}>
-          <Button transparent success onPress={() => this.props.navigation.navigate("ForgotPwd")}>
+          <Button transparent success onPress={() => navigation.navigate("ForgotPwd")}>
             <Text>Mot de passe oublié?</Text>
           </Button>
         </Body>
@@ -31,3 +35,9 @@ export default class LoginScreen extends React.Component {
     );
   }
 }
+
+// Props to pass to children components
+LoginScreen.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
+

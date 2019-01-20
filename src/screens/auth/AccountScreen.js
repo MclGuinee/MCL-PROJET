@@ -3,6 +3,7 @@ import React from "react";
 import { HeaderTab } from "../../headerTab/headerTab";
 import { Container, Header, Content, Tab, Tabs, Left, Icon, Body, Title, Button, Right } from "native-base";
 import StepIndicator from "react-native-step-indicator";
+import { createMaterialTopTabNavigator, createAppContainer } from 'react-navigation';
 
 /*Custom imports*/
 import LoginTab from "./LoginScreen";
@@ -25,6 +26,7 @@ export default class AccountScreen extends React.Component {
   };
 
   render() {
+    
     return (
       <Container style={styles.container}>
         <Header hasTabs>
@@ -42,11 +44,11 @@ export default class AccountScreen extends React.Component {
           <StepIndicator customStyles={stepIndicatorStyles} currentPosition={1} labels={stepIndicatorLabels} stepCount={4} direction="horizontal" />
 
           <Tabs initialPage={this.state.activeTabValue}>
-            <Tab heading="Se connecter" style={styles.loginTab}>
-              <LoginTab />
+            <Tab heading="Se connecter" style={styles.loginTab} >
+              <LoginTab navigation={this.props.navigation}/>
             </Tab>
             <Tab heading="Créer un compte" style={styles.accountTab}>
-              <RegisterTab />
+              <RegisterTab navigation={this.props.navigation} />
             </Tab>
           </Tabs>
         </Content>

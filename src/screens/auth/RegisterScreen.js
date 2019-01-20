@@ -1,6 +1,8 @@
-import { Ionicons } from "@expo/vector-icons";
-import { Button, Container, Content, Form, Input, Item, Label, Text , Body} from "native-base";
+
 import React from "react";
+import PropTypes from 'prop-types';
+import { Button, Container, Content, Form, Input, Item, Label, Text , Body} from "native-base";
+
 import  {globalColors, commonStyles} from "../screens-util/commonStyles"
 
 export default class RegisterScreen extends React.Component {
@@ -40,4 +42,11 @@ export default class RegisterScreen extends React.Component {
       </Container>
     );
   }
-}
+};
+
+
+// Props to pass to children components
+RegisterScreen.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
+
