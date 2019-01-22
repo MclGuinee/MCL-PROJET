@@ -1,6 +1,6 @@
 /*Standart modules imports*/
 import React from "react";
-import { HeaderTab } from "../../headerTab/headerTab";
+import { HeaderTab } from "../screens-util/headerTab";
 import { Container, Header, Content, Tab, Tabs, Left, Icon, Body, Title, Button, Right } from "native-base";
 import StepIndicator from "react-native-step-indicator";
 import { createMaterialTopTabNavigator, createAppContainer } from 'react-navigation';

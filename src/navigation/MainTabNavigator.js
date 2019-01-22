@@ -1,32 +1,44 @@
 import React from "react";
 import { createSwitchNavigator, createStackNavigator, createMaterialTopTabNavigator } from "react-navigation";
+import { Icon } from "native-base";
 
 /* Screens */
 import HomeScreen from "../screens/home/HomeScreen";
 import OrderScreen from "../screens/order/OrderScreen";
-import ProfileScreen from "../screens/ProfileScreen";
+import ProfileScreen from "../screens/auth/ProfileScreen";
 import AccountScreen from "../screens/auth/AccountScreen";
 import ForgotPwdScreen from "../screens/auth/ForgotPwdScreen";
-import OrderSummaryScreen from '../screens/order/OrderSummaryScreen';
-import OrderAddressMapScreen from "../screens/maps/OrderAddressMapScreen";
-import PaymentScreen from '../screens/payment/PaymentScreen';
-import ConfirmationScreen from '../screens/payment/ConfirmationScreen';
+import OrderSummaryScreen from "../screens/order/OrderSummaryScreen";
+import OrderAddressMapScreen from "../screens/order/OrderAddressMapScreen";
+import PaymentScreen from "../screens/payment/PaymentScreen";
+import ConfirmationScreen from "../screens/payment/ConfirmationScreen";
+import DisplayAddressesMapScreen from "../screens/delivery/DisplayAddressesMapScreen";
+import CustomerOrdersListScreen from "../screens/order/CustomerOrdersListScreen";
+import DeliveriesScreen from "../screens/delivery/DeliveriesScreen";
 
 /* Icons */
 import { Ionicons } from "@expo/vector-icons";
 import { ProfileIcon } from "../icons/profileIcon";
 
 /*Styles*/
-import  {globalColors, commonStyles} from "../screens/screens-util/commonStyles"
-
-
+import { globalColors, commonStyles } from "../screens/screens-util/commonStyles";
 
 const MainTabNavigationIcon = (tintColor, type) => {
   switch (type) {
     case "home":
-      return <Ionicons color={tintColor} name="md-home" ios="ios-home-outline" size={32} />;
+      return <Icon ios="ios-home" android="md-home" style={commonStyles.mclIcon} />;
+    case "order":
+      return <Icon ios="ios-restaurant" android="md-restaurant" style={commonStyles.mclIcon} />;
     case "profile":
-      return <ProfileIcon color={tintColor} />;    
+      return <Icon ios="ios-person" android="md-person" style={commonStyles.mclIcon} />;
+    case "delivery":
+      if (true) {
+        //Si profile livreur, alors afficher un cycliste
+        return <Icon ios="ios-bicycle" android="md-bicycle" style={commonStyles.mclIcon} />;
+      } else {
+        //Sinon l'icone d'un panier
+        return <Icon ios="ios-cart" android="md-cart" style={commonStyles.mclIcon} />;
+      }
   }
 };
 
@@ -39,25 +51,46 @@ export const MainTabNavigation = createMaterialTopTabNavigator(
       }
     },
     Order: {
-      screen: OrderScreen
+      screen: OrderScreen,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor, "order")
+      }
     },
     OrderSummary: {
-      screen: OrderSummaryScreen
-    },   
+      screen: OrderSummaryScreen,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor, "order")
+      }
+    },
+    OrderAddressMap: {
+      screen: OrderAddressMapScreen,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor, "order")
+      }
+    },
+    Payment: {
+      screen: PaymentScreen,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor, "order")
+      }
+    },
+    Confirmation: {
+      screen: ConfirmationScreen,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor, "order")
+      }
+    },
     Account: {
-      screen: AccountScreen
+      screen: AccountScreen,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor, "profile")
+      }
     },
     ForgotPwd: {
-      screen: ForgotPwdScreen
-    },
-    OrderAddressMap : {
-      screen : OrderAddressMapScreen
-    },
-    Payment:{
-      screen : PaymentScreen
-    },
-    Confirmation:{
-      screen : ConfirmationScreen
+      screen: ForgotPwdScreen,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor, "profile")
+      }
     },
     Profile: {
       screen: ProfileScreen,
@@ -65,6 +98,24 @@ export const MainTabNavigation = createMaterialTopTabNavigator(
         tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor, "profile")
       }
     },
+    DeliveriesScreen: {
+      screen: DeliveriesScreen,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor, "delivery")
+      }
+    },
+    CustomerOrdersListScreen :{
+      screen: CustomerOrdersListScreen,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor, "delivery")
+      }
+    },
+    DisplayAddressesMap: {
+      screen: DisplayAddressesMapScreen,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor, "delivery")
+      }
+    }
   },
 
   {
@@ -72,8 +123,8 @@ export const MainTabNavigation = createMaterialTopTabNavigator(
     swipeEnabled: true,
     animationEnabled: false,
     tabBarOptions: {
-      activeTintColor: "#5cb85c",//{globalColors.green},
-      inactiveTintColor: "#464646",//{globalColors.grays},
+      activeTintColor: "#5cb85c", //{globalColors.green},
+      inactiveTintColor: "#464646", //{globalColors.grays},
       shiftting: true,
       showLabel: false,
       showIcon: true,
@@ -91,11 +142,11 @@ export const MainTabNavigation = createMaterialTopTabNavigator(
   }
 );
 
-//const LoginStack = createStackNavigator({ Login: LoginScreen });
 
 const mainApp = createSwitchNavigator(
   {
     //Login: LoginStack,
+    // Dans un deuxième temps prevoir 2 stack : 1 pour la partie home et gestion login et profile; et 1 autre pour le processus de commande et livraison
     App: MainTabNavigation
   } //,
   /* {

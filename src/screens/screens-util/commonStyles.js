@@ -27,14 +27,33 @@ const commonStyles = StyleSheet.create({
     marginTop: 30
   },
 
-  line : {
-      borderBottomColor: '#5cb85c',
-      borderBottomWidth: 3,
-      width: '100%',
-      marginHorizontal: 5,
-      fontWeight: 'bold'
+  line: {
+    borderBottomColor: "#5cb85c",
+    borderBottomWidth: 3,
+    width: "100%",
+    marginHorizontal: 5,
+    fontWeight: "bold"
+  },
+
+  horizontalComponents: {
+    flex: 1,
+    flexDirection: "column"
+  },
+
+  greenColor: {
+    color: "#5cb85c"
+  },
+
+  mclIcon :{
+    fontSize:28,
+    //color:{globalColors.green}
+    color: "#5cb85c"
+  },
+
+  map: {
+    marginTop: 1.5,
+    ...StyleSheet.absoluteFillObject
   }
 });
 
-export {globalColors, commonStyles}
-
+export { globalColors, commonStyles };

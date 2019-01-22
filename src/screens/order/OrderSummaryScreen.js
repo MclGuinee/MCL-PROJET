@@ -6,7 +6,7 @@ import { Container, Header, Content, Left, Right, Title, Separator, List, Form, 
 import StepIndicator from "react-native-step-indicator";
 
 /*Custom import*/
-import { HeaderTab } from "../../headerTab/headerTab";
+import { HeaderTab } from "../screens-util/headerTab";
 import { stepIndicatorLabels, stepIndicatorStyles } from "../screens-util/stepIndicatorProperties";
 
 /*Styles*/

@@ -1,6 +1,6 @@
 /*Standards modules*/
 import React from "react";
-import { HeaderTab } from "../../headerTab/headerTab";
+import { HeaderTab } from "../screens-util/headerTab";
 import { Image, Dimensions, Alert } from "react-native";
 import { Container, Content, H3, Header, Left, Right, Title,Card, CardItem, Text, Body} from "native-base";
 
