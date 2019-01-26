@@ -11,7 +11,7 @@ import { stepIndicatorLabels, stepIndicatorStyles } from "../screens-util/stepIn
 
 /*Styles*/
 import { styles } from "./styles";
-import { globalColors, commonStyles } from "../screens-util/commonStyles";
+import { commonStyles } from "../screens-util/commonStyles";
 
 export default class OrderSummaryScreen extends React.Component {
   render() {

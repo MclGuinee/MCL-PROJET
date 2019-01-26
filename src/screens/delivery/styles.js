@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { globalColors } from "../screens-util/commonStyles";
+import { mclColors } from '../screens-util/mclColors';
 
 const styles = StyleSheet.create({
   container: {
@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 
   deliveryDate: {
     fontWeight: "bold",
-    color: globalColors.green
+    color: mclColors.green
   },
 
 });

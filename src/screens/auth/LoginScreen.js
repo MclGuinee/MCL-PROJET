@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import { Container, Form, Item, Input, Text, Label, Button, Right, View, Body } from "native-base";
-import  {globalColors, commonStyles} from "../screens-util/commonStyles"
+import  {commonStyles} from "../screens-util/commonStyles"
 
 export default class LoginScreen extends React.Component {
   render() {

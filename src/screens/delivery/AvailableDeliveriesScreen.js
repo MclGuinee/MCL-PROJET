@@ -20,7 +20,7 @@ export default class AvailableDeliveriesScreen extends React.Component {
       {
         deliveryId: "ccccccc",
         startAddressName: "Landreah, 28 septembre",
-        startDistrict: "Cameroun",
+        startDistrict: "Cameroun hbkjhj qsdhsqjkd qsdhqs",
         endAddressName: "Chez mon mari",
         endDistrict: "Sans file",
         startAddressLatitude: 47.082892,
@@ -67,37 +67,37 @@ export default class AvailableDeliveriesScreen extends React.Component {
           {this.state.availableOrders.map((availableOrder, index) => {
             return (
               <Card style={commonStyles.cardStyle} key={index}>
-                <CardItem header>
+                <CardItem header first>
                   <Left>
-                    <Text note style={commonStyles.textLabel}>
-                      Livraison prévue le:
-                    </Text>
+                    <Text note>Livraison prévue le:</Text>
                     <Text style={styles.deliveryDate}>{availableOrder.deliveryStartDateTime}</Text>
                   </Left>
                 </CardItem>
                 <CardItem>
-                  <Text note style={commonStyles.textLabel}>
-                    De:
-                  </Text>
-                  <Text>{availableOrder.startDistrict}</Text>
+                  <Left>
+                    <Text note>De:</Text>
+                    <Text>{availableOrder.startDistrict}</Text>
+                  </Left>
                 </CardItem>
                 <CardItem>
                   <Left>
-                    <Text note style={commonStyles.textLabel}>
-                      A:
-                    </Text>
+                    <Text note>A:</Text>
                     <Text>{availableOrder.endDistrict}</Text>
                   </Left>
                 </CardItem>
                 <CardItem>
                   <Left>
-                    <Text note style={commonStyles.textLabel}>
-                      Distance:
-                    </Text>
-                    <Text>{availableOrder.distanceInKM}</Text>
+                    <Text note>Prix:</Text>
+                    <Text>{availableOrder.deliveryPrice + availableOrder.deliveryFee}</Text>
+                    <Text note>FG</Text>
                   </Left>
+                  <Body >
+                    <Text note>Distance:</Text>
+                    <Text>{availableOrder.distanceInKM}</Text>
+                    <Text note>Km</Text>
+                  </Body> 
                 </CardItem>
-                <CardItem footer>
+                <CardItem footer last>
                   <Left />
                   <Body>
                     <Button
@@ -123,7 +123,7 @@ export default class AvailableDeliveriesScreen extends React.Component {
                       <Text>ACCEPTER</Text>
                     </Button>
                   </Body>
-                  <Right>
+                  <Right style={{marginRight:15}}>
                     <Button transparent success onPress={() => this.props.navigation.navigate("DisplayAddressesMap")}>
                       <Icon active name="navigate" style={commonStyles.mclIcon} />
                     </Button>

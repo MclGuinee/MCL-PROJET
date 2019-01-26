@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Content, Form, Item, Input, Text, Label, Button, Right, Body,Toast, Header, Left, Icon, Title } from "native-base";
 import { styles } from "./styles";
-import { globalColors, commonStyles } from "../screens-util/commonStyles";
+import {  commonStyles } from "../screens-util/commonStyles";
 
 export default class ForgotPwdScreen extends React.Component {
   state = {

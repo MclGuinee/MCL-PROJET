@@ -21,7 +21,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { ProfileIcon } from "../icons/profileIcon";
 
 /*Styles*/
-import { globalColors, commonStyles } from "../screens/screens-util/commonStyles";
+import { commonStyles } from "../screens/screens-util/commonStyles";
+import { mclColors } from '../screens/screens-util/mclColors';
 
 const MainTabNavigationIcon = (tintColor, type) => {
   switch (type) {
@@ -123,8 +124,8 @@ export const MainTabNavigation = createMaterialTopTabNavigator(
     swipeEnabled: true,
     animationEnabled: false,
     tabBarOptions: {
-      activeTintColor: "#5cb85c", //{globalColors.green},
-      inactiveTintColor: "#464646", //{globalColors.grays},
+      activeTintColor: mclColors.green,
+      inactiveTintColor: mclColors.gray,
       shiftting: true,
       showLabel: false,
       showIcon: true,

@@ -8,7 +8,8 @@ import StepIndicator from "react-native-step-indicator";
 
 /*Styles*/
 import {styles} from "./styles";
-import { globalColors, commonStyles } from "../screens-util/commonStyles";
+import {commonStyles } from "../screens-util/commonStyles";
+import {mclColors} from "../screens-util/mclColors";
 
 /*Custom imports*/
 import { stepIndicatorLabels, stepIndicatorStyles } from "../screens-util/stepIndicatorProperties";
@@ -48,7 +49,7 @@ export default class OrderScreen extends React.Component {
               <Picker
                 mode="dropdown"
                 iosIcon={<Icon name="ios-arrow-down-outline" />}
-                placeholderIconColor={globalColors.green}
+                placeholderIconColor={mclColors.green}
                 selectedValue={this.state.selected}
                 onValueChange={this.onValueChange.bind(this)}
               >
@@ -74,7 +75,7 @@ export default class OrderScreen extends React.Component {
               <Picker
                 mode="dropdown"
                 iosIcon={<Icon name="ios-arrow-down-outline" />}
-                placeholderIconColor={globalColors.green}
+                placeholderIconColor={mclColors.green}
                 selectedValue={this.state.selected}
                 onValueChange={this.onValueChange.bind(this)}
               >
@@ -97,7 +98,7 @@ export default class OrderScreen extends React.Component {
               </Button>
             </Item>
             <Item>
-              <Icon ios="ios-phone-portrait" android="md-phone-portrait" style={[{ fontSize: 30, marginVertical: 10 }, globalColors.green]} />
+              <Icon ios="ios-phone-portrait" android="md-phone-portrait" style={[{ fontSize: 30, marginVertical: 10 }, mclColors.green]} />
               <TextInput keyboardType="number-pad" placeholder="Mobile : 622000000" />
             </Item>
             <Item last>

@@ -3,7 +3,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { Button, Container, Content, Form, Input, Item, Label, Text , Body} from "native-base";
 
-import  {globalColors, commonStyles} from "../screens-util/commonStyles"
+import  {commonStyles} from "../screens-util/commonStyles"
 
 export default class RegisterScreen extends React.Component {
   render() {

@@ -2,11 +2,11 @@
 import React from "react";
 import { HeaderTab } from "../screens-util/headerTab";
 import { Image, Dimensions, Alert } from "react-native";
-import { Container, Content, H3, Header, Left, Right, Title,Card, CardItem, Text, Body} from "native-base";
+import { Container, Content, H3, Toast, Button, Header, Left, Right, Title, Card, CardItem, Text, Body, Thumbnail } from "native-base";
 
 /*Styles*/
-import {styles} from "./styles";
-import  {globalColors, commonStyles} from "../screens-util/commonStyles"
+import { styles } from "./styles";
+import { commonStyles } from "../screens-util/commonStyles";
 
 /*Constantes*/
 const deviceWidth = Dimensions.get("window").width;
@@ -15,13 +15,20 @@ const repasRestau = require("../../../assets/images/repasrestau-160x90.jpg");
 
 /*Component class */
 export default class HomeScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showToast: false
+    };
+  }
+
   render() {
     return (
       <Container style={styles.container}>
         <Header>
           <Left />
           <Body>
-            <Title >Accueil</Title>
+            <Title>Accueil</Title>
           </Body>
           <Right />
         </Header>
@@ -30,39 +37,53 @@ export default class HomeScreen extends React.Component {
             <H3 style={{ marginBottom: 15 }}>Bienvenue sur MCL</H3>
             <Text style={{ textAlign: "center" }}>Que souhaitez-vous vous faire livrer aujourd'hui ?</Text>
           </Body>
-          <Card style={styles.cardStyle}>
-            <CardItem button onPress={() => this.props.navigation.navigate("Order")}>
-              <Body style={commonStyles.centerComponent}>
-                <Image
-                  style={{
-                    alignSelf: "center",
-                    height: 150,
-                    resizeMode: "cover",
-                    width: deviceWidth / 1.18,
-                    marginVertical: 5
-                  }}
-                  source={repasFaitMaison}
-                />
-                <Text note>Votre repas fait maison</Text>
-              </Body>
+          <Card>
+            <CardItem>
+              <Left>
+                <Thumbnail source={repasFaitMaison} />
+                <Body>
+                  <Text>Votre repas fait maison</Text>
+                </Body>
+              </Left>
+            </CardItem>
+
+            <CardItem cardBody button onPress={() => this.props.navigation.navigate("Order")}>
+              <Image
+                style={{
+                  resizeMode: "cover",
+                  width: null,
+                  height: 200,
+                  flex: 1
+                }}
+                source={repasFaitMaison}
+              />
             </CardItem>
           </Card>
 
-          <Card style={[styles.cardStyle]}>
-            <CardItem button onPress={() => Alert.alert("Vous pourrez commander dans votre restaurant très bientôt")}>
-              <Body style={commonStyles.centerComponent}>
-                <Image
-                  style={{
-                    alignSelf: "center",
-                    height: 150,
-                    resizeMode: "cover",
-                    width: deviceWidth / 1.18,
-                    marginVertical: 5
-                  }}
-                  source={repasRestau}
-                />
-                <Text note>Le repas de votre restaurant préféré.</Text>
-              </Body>
+          <Card>
+            <CardItem>
+              <Left>
+                <Thumbnail source={repasRestau} />
+                <Body>
+                  <Text>Le repas de votre restaurant préféré.</Text>
+                </Body>
+              </Left>
+            </CardItem>
+
+            <CardItem
+              cardBody
+              button
+              onPress={() => alert("Vous pourrez commander dans votre restaurant très bientôt.En attendant, vous pouvez commander votre répas fait maison.")}
+            >
+              <Image
+                style={{
+                  resizeMode: "cover",
+                  width: null,
+                  height: 200,
+                  flex: 1
+                }}
+                source={repasRestau}
+              />
             </CardItem>
           </Card>
         </Content>

@@ -42,8 +42,7 @@ export const commonStyles = StyleSheet.create({
 
   mclIcon :{
     fontSize:28,
-    color:globalColors.green
-    //color: "#5cb85c"
+    color:mclColors.green
   },
 
   map: {
@@ -51,9 +50,5 @@ export const commonStyles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject
   },
 
-  textLabel :{
-    //marginRight : 5
-  }
 });
 
-//export { commonStyles };
