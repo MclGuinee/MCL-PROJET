@@ -1,11 +1,7 @@
 import { StyleSheet } from "react-native";
+import { mclColors } from './mclColors';
 
-const globalColors = {
-  green: "#5cb85c",
-  gray: "#f5f5f0"
-};
-
-const commonStyles = StyleSheet.create({
+export const commonStyles = StyleSheet.create({
   headerContainer: {
     marginTop: 10
   },
@@ -28,7 +24,7 @@ const commonStyles = StyleSheet.create({
   },
 
   line: {
-    borderBottomColor: "#5cb85c",
+    borderBottomColor: mclColors.green,
     borderBottomWidth: 3,
     width: "100%",
     marginHorizontal: 5,
@@ -41,19 +37,23 @@ const commonStyles = StyleSheet.create({
   },
 
   greenColor: {
-    color: "#5cb85c"
+    color: mclColors.green
   },
 
   mclIcon :{
     fontSize:28,
-    //color:{globalColors.green}
-    color: "#5cb85c"
+    color:globalColors.green
+    //color: "#5cb85c"
   },
 
   map: {
     marginTop: 1.5,
     ...StyleSheet.absoluteFillObject
+  },
+
+  textLabel :{
+    //marginRight : 5
   }
 });
 
-export { globalColors, commonStyles };
+//export { commonStyles };

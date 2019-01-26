@@ -14,7 +14,7 @@ import PaymentScreen from "../screens/payment/PaymentScreen";
 import ConfirmationScreen from "../screens/payment/ConfirmationScreen";
 import DisplayAddressesMapScreen from "../screens/delivery/DisplayAddressesMapScreen";
 import CustomerOrdersListScreen from "../screens/order/CustomerOrdersListScreen";
-import DeliveriesScreen from "../screens/delivery/DeliveriesScreen";
+import AvailableDeliveriesScreen from "../screens/delivery/AvailableDeliveriesScreen";
 
 /* Icons */
 import { Ionicons } from "@expo/vector-icons";
@@ -98,8 +98,8 @@ export const MainTabNavigation = createMaterialTopTabNavigator(
         tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor, "profile")
       }
     },
-    DeliveriesScreen: {
-      screen: DeliveriesScreen,
+    AvailableDeliveries: {
+      screen: AvailableDeliveriesScreen,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor, "delivery")
       }

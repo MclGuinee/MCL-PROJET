@@ -67,7 +67,7 @@ export default class OrderScreen extends React.Component {
                 success
                 onPress={() => this.props.navigation.navigate('OrderAddressMap')}
               >
-                <Icon active ios="ios-add-circle" android="md-add-circle" />
+                <Icon active ios="ios-pin" android="md-pin" />
               </Button>
             </Item>
             <Item>
@@ -93,7 +93,7 @@ export default class OrderScreen extends React.Component {
                 success
                 onPress={() => this.props.navigation.navigate('OrderAddressMap')}
               >
-                <Icon active ios="ios-add-circle" android="md-add-circle" />
+                <Icon active name="pin" />
               </Button>
             </Item>
             <Item>
