@@ -22,8 +22,8 @@ import { ProfileIcon } from "../icons/profileIcon";
 
 /*Styles*/
 import { commonStyles } from "../screens/screens-util/commonStyles";
-import { mclColors } from '../screens/screens-util/mclColors';
-import DeliveriesScreen from '../screens/delivery/DeliveriesScreen';
+import { mclColors } from "../screens/screens-util/mclColors";
+import DeliveriesScreen from "../screens/delivery/DeliveriesScreen";
 
 const MainTabNavigationIcon = (tintColor, type) => {
   switch (type) {
@@ -41,6 +41,8 @@ const MainTabNavigationIcon = (tintColor, type) => {
         //Sinon l'icone d'un panier
         return <Icon ios="ios-cart" android="md-cart" style={commonStyles.mclIcon} />;
       }
+    case "customer":
+      return <Icon ios="ios-cart" android="md-cart" style={commonStyles.mclIcon} />;
   }
 };
 
@@ -100,16 +102,16 @@ export const MainTabNavigation = createMaterialTopTabNavigator(
         tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor, "profile")
       }
     },
-    DeliveriesScreen: {
+    Deliveries: {
       screen: DeliveriesScreen,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor, "delivery")
       }
     },
-    CustomerOrdersListScreen :{
+    CustomerOrdersList: {
       screen: CustomerOrdersListScreen,
       navigationOptions: {
-        tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor, "delivery")
+        tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor, "customer")
       }
     },
     DisplayAddressesMap: {
@@ -143,7 +145,6 @@ export const MainTabNavigation = createMaterialTopTabNavigator(
     }
   }
 );
-
 
 const mainApp = createSwitchNavigator(
   {
