@@ -23,6 +23,7 @@ import { ProfileIcon } from "../icons/profileIcon";
 /*Styles*/
 import { commonStyles } from "../screens/screens-util/commonStyles";
 import { mclColors } from '../screens/screens-util/mclColors';
+import DeliveriesScreen from '../screens/delivery/DeliveriesScreen';
 
 const MainTabNavigationIcon = (tintColor, type) => {
   switch (type) {
@@ -99,8 +100,8 @@ export const MainTabNavigation = createMaterialTopTabNavigator(
         tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor, "profile")
       }
     },
-    AvailableDeliveries: {
-      screen: AvailableDeliveriesScreen,
+    DeliveriesScreen: {
+      screen: DeliveriesScreen,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor, "delivery")
       }

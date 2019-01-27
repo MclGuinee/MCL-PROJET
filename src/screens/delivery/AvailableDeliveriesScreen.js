@@ -1,6 +1,7 @@
 /*Standards modules*/
 import React from "react";
 import { Dimensions, Alert } from "react-native";
+import PropTypes from "prop-types";
 import { Container, Content, Body, Card, CardItem, Text, Icon, Button, ListItem, Right, Form, Left } from "native-base";
 
 /*Custom imports */
@@ -30,7 +31,7 @@ export default class AvailableDeliveriesScreen extends React.Component {
         distanceInKM: "30",
         deliveryStartDateTime: "03-01-2019",
         customerId: "UID : refer to customerInformations collection",
-        status: "ORDERED/ACCEPTED_BY_DELIVER/DELIVERED/PAIED",
+        status: "ORDERED",
         delivererId: "UID: refer to deliverInformations collection ",
         deliveryPrice: 20000,
         deliveryFee: 1000,
@@ -61,79 +62,90 @@ export default class AvailableDeliveriesScreen extends React.Component {
   };
 
   render() {
+    const { navigation } = this.props;
+
     return (
       <Container>
         <Content padder>
-          {this.state.availableOrders.map((availableOrder, index) => {
-            return (
-              <Card style={commonStyles.cardStyle} key={index}>
-                <CardItem header first>
-                  <Left>
-                    <Text note>Livraison prévue le:</Text>
-                    <Text style={styles.deliveryDate}>{availableOrder.deliveryStartDateTime}</Text>
-                  </Left>
-                </CardItem>
-                <CardItem>
-                  <Left>
-                    <Text note>De:</Text>
-                    <Text>{availableOrder.startDistrict}</Text>
-                  </Left>
-                </CardItem>
-                <CardItem>
-                  <Left>
-                    <Text note>A:</Text>
-                    <Text>{availableOrder.endDistrict}</Text>
-                  </Left>
-                </CardItem>
-                <CardItem>
-                  <Left>
-                    <Text note>Prix:</Text>
-                    <Text>{availableOrder.deliveryPrice + availableOrder.deliveryFee}</Text>
-                    <Text note>FG</Text>
-                  </Left>
-                  <Body >
-                    <Text note>Distance:</Text>
-                    <Text>{availableOrder.distanceInKM}</Text>
-                    <Text note>Km</Text>
-                  </Body> 
-                </CardItem>
-                <CardItem footer last>
-                  <Left />
-                  <Body>
-                    <Button
-                      success
-                      disabled={availableOrder.status == "ORDERED"}
-                      onPress={() =>
-                        Alert.alert(
-                          "Acceptation livraison",
-                          "Acceptez-vous cette livraison?",
-                          [
-                            {
-                              text: "Non"
-                            },
-                            {
-                              text: "Oui",
-                              onPress: () => setState(availableOrder.status, "ACCEPTED")
-                            }
-                          ],
-                          { cancelable: false }
-                        )
-                      }
-                    >
-                      <Text>ACCEPTER</Text>
-                    </Button>
-                  </Body>
-                  <Right style={{marginRight:15}}>
-                    <Button transparent success onPress={() => this.props.navigation.navigate("DisplayAddressesMap")}>
-                      <Icon active name="navigate" style={commonStyles.mclIcon} />
-                    </Button>
-                  </Right>
-                </CardItem>
-              </Card>
-            );
-          })}
+          {this.state.availableOrders
+            .filter(order => order.status === "ORDERED")
+            .map((availableOrder, index) => {
+              return (
+                <Card style={commonStyles.cardStyle} key={index}>
+                  <CardItem header first>
+                    <Left>
+                      <Text note>Livraison prévue le:</Text>
+                      <Text style={styles.deliveryDate}>{availableOrder.deliveryStartDateTime}</Text>
+                    </Left>
+                    <Right style={{ marginRight: 15 }}>
+                      <Button transparent success onPress={() => navigation.navigate("DisplayAddressesMap")}>
+                        <Icon active name="navigate" style={commonStyles.mclIcon} />
+                      </Button>
+                    </Right>
+                  </CardItem>
+                  <CardItem cardBody>
+                    <Left>
+                      <Text note>De:</Text>
+                      <Text>{availableOrder.startDistrict}</Text>
+                    </Left>
+                  </CardItem>
+                  <CardItem cardBody>
+                    <Left>
+                      <Text note>A:</Text>
+                      <Text>{availableOrder.endDistrict}</Text>
+                    </Left>
+                  </CardItem>
+                  <CardItem cardBody>
+                    <Left>
+                      <Text note>Prix:</Text>
+                      <Text>{availableOrder.deliveryPrice + availableOrder.deliveryFee}</Text>
+                      <Text note>FG</Text>
+                    </Left>
+                  </CardItem>
+                  <CardItem cardBody>
+                    <Left>
+                      <Text note>Distance:</Text>
+                      <Text>{availableOrder.distanceInKM}</Text>
+                      <Text note>Km</Text>
+                    </Left>
+                  </CardItem>
+                  <CardItem footer last>
+                    <Left />
+                    <Body>
+                      <Button
+                        success
+                        onPress={() =>
+                          Alert.alert(
+                            "Acceptation livraison",
+                            "Acceptez-vous cette livraison?",
+                            [
+                              {
+                                text: "Non"
+                              },
+                              {
+                                text: "Oui",
+                                /*onPress: () => setState(availableOrder.status, "ACCEPTED")*/
+                              }
+                            ],
+                            { cancelable: false }
+                          )
+                        }
+                      >
+                        <Text>ACCEPTER</Text>
+                      </Button>
+                    </Body>
+                    <Right />
+                  </CardItem>
+                </Card>
+              );
+            })}
         </Content>
       </Container>
     );
   }
 }
+
+// Props to pass to children components
+AvailableDeliveriesScreen.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
