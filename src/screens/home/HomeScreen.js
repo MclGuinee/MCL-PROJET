@@ -15,12 +15,6 @@ const repasRestau = require("../../../assets/images/repasrestau-160x90.jpg");
 
 /*Component class */
 export default class HomeScreen extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showToast: false
-    };
-  }
 
   render() {
     return (
