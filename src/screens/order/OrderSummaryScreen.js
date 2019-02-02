@@ -6,7 +6,6 @@ import { Container, Header, Content, Left, Right, Title, Separator, List, Form, 
 import StepIndicator from "react-native-step-indicator";
 
 /*Custom import*/
-import { HeaderTab } from "../screens-util/headerTab";
 import { stepIndicatorLabels, stepIndicatorStyles } from "../screens-util/stepIndicatorProperties";
 
 /*Styles*/
@@ -17,18 +16,6 @@ export default class OrderSummaryScreen extends React.Component {
   render() {
     return (
       <Container style={styles.container}>
-        <Header hasTabs>
-          <Left>
-            <Button transparent onPress={() => this.props.navigation.goBack()}>
-              <Icon name="arrow-back" />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Récapitulatif</Title>
-          </Body>
-          <Right />
-        </Header>
-
         <Content>
           <StepIndicator customStyles={stepIndicatorStyles} currentPosition={0} labels={stepIndicatorLabels} stepCount={4} direction="horizontal" />
           <List>
@@ -42,7 +29,7 @@ export default class OrderSummaryScreen extends React.Component {
             <ListItem>
               <Text>A:</Text>
               <Text>Bureau</Text>
-            </ListItem>            
+            </ListItem>
             <ListItem last>
               <Text>Le : </Text>
               <Text>01 01 2019 12h00</Text>

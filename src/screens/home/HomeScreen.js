@@ -1,6 +1,5 @@
 /*Standards modules*/
 import React from "react";
-import { HeaderTab } from "../screens-util/headerTab";
 import { Image, Dimensions, Alert } from "react-native";
 import { Container, Content, H3, Toast, Button, Header, Left, Right, Title, Card, CardItem, Text, Body, Thumbnail } from "native-base";
 
@@ -18,14 +17,7 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <Container style={styles.container}>
-        <Header>
-          <Left />
-          <Body>
-            <Title>Accueil</Title>
-          </Body>
-          <Right />
-        </Header>
+      <Container style={styles.container}>       
         <Content padder>
           <Body style={[commonStyles.centerComponent, { marginVertical: 15 }]}>
             <H3 style={{ marginBottom: 15 }}>Bienvenue sur MCL</H3>

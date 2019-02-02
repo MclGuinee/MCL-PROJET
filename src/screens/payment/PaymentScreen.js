@@ -5,30 +5,17 @@ import { Container, Header, Content, Left, Right, Title, Separator, List, Form, 
 import StepIndicator from "react-native-step-indicator";
 
 /*Custom import*/
-import { HeaderTab } from "../screens-util/headerTab";
 import { stepIndicatorLabels, stepIndicatorStyles } from "../screens-util/stepIndicatorProperties";
 
 /*Styles*/
 import { styles } from "./styles";
 import { commonStyles } from "../screens-util/commonStyles";
-import { View } from 'native-base';
+import { View } from "native-base";
 
 export default class PaymentScreen extends React.Component {
   render() {
     return (
       <Container style={styles.container}>
-        <Header>
-          <Left>
-            <Button transparent onPress={() => this.props.navigation.goBack()}>
-              <Icon name="arrow-back" />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Paiement</Title>
-          </Body>
-          <Right />
-        </Header>
-
         <Content>
           <StepIndicator customStyles={stepIndicatorStyles} currentPosition={2} labels={stepIndicatorLabels} stepCount={4} direction="horizontal" />
           <View style={commonStyles.line}>

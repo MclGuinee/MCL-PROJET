@@ -4,9 +4,6 @@ import { Dimensions, Alert } from "react-native";
 import { Container, Content, Body, Card, CardItem, Text, Icon, Button, ListItem, Right, Form, Left } from "native-base";
 import PropTypes from "prop-types";
 
-/*Custom imports */
-import { HeaderTab } from "../screens-util/headerTab";
-
 /*Styles*/
 import { styles } from "./styles";
 import { commonStyles } from "../screens-util/commonStyles";

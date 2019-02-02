@@ -45,6 +45,10 @@ export const commonStyles = StyleSheet.create({
     color:mclColors.green
   },
 
+  tabBarIcon :{
+    fontSize:28
+  },
+
   map: {
     marginTop: 1.5,
     ...StyleSheet.absoluteFillObject

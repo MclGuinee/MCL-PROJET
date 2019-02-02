@@ -1,15 +1,14 @@
 /*Standard modules */
 import React from "react";
-import { HeaderTab } from "../screens-util/headerTab";
 import { TextInput } from "react-native";
 import DatePicker from "react-native-datepicker";
 import { Container, Header, Content, Left, Right, Title, Form, Item, ListItem, Icon, Input, Picker, Body, Text, Label, Button } from "native-base";
 import StepIndicator from "react-native-step-indicator";
 
 /*Styles*/
-import {styles} from "./styles";
-import {commonStyles } from "../screens-util/commonStyles";
-import {mclColors} from "../screens-util/mclColors";
+import { styles } from "./styles";
+import { commonStyles } from "../screens-util/commonStyles";
+import { mclColors } from "../screens-util/mclColors";
 
 /*Custom imports*/
 import { stepIndicatorLabels, stepIndicatorStyles } from "../screens-util/stepIndicatorProperties";
@@ -30,20 +29,8 @@ export default class OrderScreen extends React.Component {
   render() {
     return (
       <Container style={styles.container}>
-        <Header>
-          <Left>
-            <Button transparent onPress={() => this.props.navigation.goBack()}>
-              <Icon name="arrow-back" />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Commande</Title>
-          </Body>
-          <Right />
-        </Header>
-
         <Content>
-            <StepIndicator customStyles={stepIndicatorStyles} currentPosition={0} labels={stepIndicatorLabels} stepCount={4} direction="horizontal" />
+          <StepIndicator customStyles={stepIndicatorStyles} currentPosition={0} labels={stepIndicatorLabels} stepCount={4} direction="horizontal" />
           <Form>
             <Item>
               <Picker
@@ -63,11 +50,7 @@ export default class OrderScreen extends React.Component {
                   return <Picker.Item key={index} label={item} value={item} />;
                 })} */}
               </Picker>
-              <Button
-                transparent
-                success
-                onPress={() => this.props.navigation.navigate('OrderAddressMap')}
-              >
+              <Button transparent success onPress={() => this.props.navigation.navigate("OrderAddressMap")}>
                 <Icon active ios="ios-pin" android="md-pin" />
               </Button>
             </Item>
@@ -89,11 +72,7 @@ export default class OrderScreen extends React.Component {
                   return <Picker.Item key={index} label={item} value={item} />;
                 })} */}
               </Picker>
-              <Button
-                transparent
-                success
-                onPress={() => this.props.navigation.navigate('OrderAddressMap')}
-              >
+              <Button transparent success onPress={() => this.props.navigation.navigate("OrderAddressMap")}>
                 <Icon active name="pin" />
               </Button>
             </Item>

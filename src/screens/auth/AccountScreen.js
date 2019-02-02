@@ -1,6 +1,5 @@
 /*Standart modules imports*/
 import React from "react";
-import { HeaderTab } from "../screens-util/headerTab";
 import { Container, Header, Content, Tab, Tabs, Left, Icon, Body, Title, Button, Right } from "native-base";
 import StepIndicator from "react-native-step-indicator";
 import { createMaterialTopTabNavigator, createAppContainer } from 'react-navigation';
@@ -29,17 +28,6 @@ export default class AccountScreen extends React.Component {
     
     return (
       <Container style={styles.container}>
-        <Header hasTabs>
-          <Left>
-            <Button transparent onPress={() => this.props.navigation.goBack()}>
-              <Icon name="arrow-back" />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Connexion</Title>
-          </Body>
-          <Right />
-        </Header>
         <Content>
           <StepIndicator customStyles={stepIndicatorStyles} currentPosition={1} labels={stepIndicatorLabels} stepCount={4} direction="horizontal" />
 

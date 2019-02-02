@@ -52,18 +52,6 @@ export default class DisplayAddressesMapScreen extends Component {
 
     return (
       <Container>
-        <Header>
-          <Left>
-            <Button transparent onPress={() => this.props.navigation.goBack()}>
-              <Icon name="arrow-back" />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Saisie Adresse</Title>
-          </Body>
-          <Right />
-        </Header>
-
         <View style={styles.container}>{this.state.errorMessage ? <Loading /> : <MapView style={commonStyles.map} initialRegion={this.state.location} />}</View>
       </Container>
     );
