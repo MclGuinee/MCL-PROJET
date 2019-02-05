@@ -1,4 +1,4 @@
-import globalStyles from "./commonStyles";
+import {mclColors} from "./mclColors";
 
 export const stepIndicatorLabels = ["Commande","Connexion","Paiement","Confirmation"];
 export const stepIndicatorStyles = {
@@ -6,21 +6,21 @@ export const stepIndicatorStyles = {
   currentStepIndicatorSize:30,
   separatorStrokeWidth: 2,
   currentStepStrokeWidth: 3,
-  stepStrokeCurrentColor: "#5cb85c",
+  stepStrokeCurrentColor: mclColors.green,
   stepStrokeWidth: 3,
-  stepStrokeFinishedColor: '#5cb85c',
+  stepStrokeFinishedColor: mclColors.green,
   stepStrokeUnFinishedColor: '#aaaaaa',
-  separatorFinishedColor: '#5cb85c',
+  separatorFinishedColor: mclColors.green,
   separatorUnFinishedColor: '#aaaaaa',
-  stepIndicatorFinishedColor: '#5cb85c',
+  stepIndicatorFinishedColor: mclColors.green,
   stepIndicatorUnFinishedColor: '#ffffff',
   stepIndicatorCurrentColor: '#ffffff',
   stepIndicatorLabelFontSize: 13,
   currentStepIndicatorLabelFontSize: 13,
-  stepIndicatorLabelCurrentColor: '#5cb85c',
+  stepIndicatorLabelCurrentColor: mclColors.green,
   stepIndicatorLabelFinishedColor: '#ffffff',
   stepIndicatorLabelUnFinishedColor: '#aaaaaa',
   labelColor: '#999999',
   labelSize: 13,
-  currentStepLabelColor: '#5cb85c'
+  currentStepLabelColor: mclColors.green
 }

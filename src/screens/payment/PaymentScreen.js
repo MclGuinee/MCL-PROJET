@@ -16,12 +16,12 @@ export default class PaymentScreen extends React.Component {
   render() {
     return (
       <Container style={styles.container}>
-        <Content>
+        <Content style={commonStyles.stepIndicatorContent} padder>
           <StepIndicator customStyles={stepIndicatorStyles} currentPosition={2} labels={stepIndicatorLabels} stepCount={4} direction="horizontal" />
-          <View style={commonStyles.line}>
-            <Text>Paiement par orange money</Text>
-          </View>
+
           <Form>
+            <Text style={{ fontWeight: "bold", marginTop: 10,alignSelf:"center" }}>Paiement par orange money</Text>
+
             <Item floatingLabel>
               <Label>Nom*</Label>
               <Input />

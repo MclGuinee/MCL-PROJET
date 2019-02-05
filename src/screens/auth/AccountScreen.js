@@ -12,6 +12,7 @@ import { stepIndicatorLabels, stepIndicatorStyles } from "../screens-util/stepIn
 
 /*styles*/
 import {styles} from "./styles";
+import { commonStyles } from "../screens-util/commonStyles";
 
 export default class AccountScreen extends React.Component {
   state = {
@@ -28,10 +29,10 @@ export default class AccountScreen extends React.Component {
     
     return (
       <Container style={styles.container}>
-        <Content>
+        <Content style={commonStyles.stepIndicatorContent}>
           <StepIndicator customStyles={stepIndicatorStyles} currentPosition={1} labels={stepIndicatorLabels} stepCount={4} direction="horizontal" />
 
-          <Tabs initialPage={this.state.activeTabValue}>
+          <Tabs initialPage={this.state.activeTabValue} style={{marginTop:10}}>
             <Tab heading="Se connecter" style={styles.loginTab} >
               <LoginTab navigation={this.props.navigation}/>
             </Tab>

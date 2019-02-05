@@ -37,7 +37,7 @@ export default class ConfirmationScreen extends React.Component {
   render() {
     return (
       <Container style={styles.container}>
-        <Content>
+        <Content style={commonStyles.stepIndicatorContent} padder>
           <StepIndicator customStyles={stepIndicatorStyles} currentPosition={3} labels={stepIndicatorLabels} stepCount={4} direction="horizontal" />
 
           {true ? this.displayPaymentOkMsg() : this.displayPaymentKoMsg()}

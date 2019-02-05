@@ -97,6 +97,12 @@ export default class AvailableDeliveriesScreen extends React.Component {
                   </CardItem>
                   <CardItem cardBody>
                     <Left>
+                      <Text note>Livraison à faire pour le:</Text>
+                      <Text>{availableOrder.deliveryStartDateTime}</Text>
+                    </Left>
+                  </CardItem>
+                  <CardItem cardBody>
+                    <Left>
                       <Text note>Prix:</Text>
                       <Text>{availableOrder.deliveryPrice + availableOrder.deliveryFee}</Text>
                       <Text note>FG</Text>

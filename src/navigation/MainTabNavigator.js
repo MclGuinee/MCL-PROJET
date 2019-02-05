@@ -1,6 +1,6 @@
 import React from "react";
-import { createStackNavigator, createMaterialTopTabNavigator,createSwitchNavigator } from "react-navigation";
-import {createMaterialBottomTabNavigator} from "react-navigation-material-bottom-tabs"
+import { createStackNavigator, createMaterialTopTabNavigator, createSwitchNavigator } from "react-navigation";
+import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 import { Icon } from "native-base";
 
 /* Screens */
@@ -59,12 +59,13 @@ const HomeStack = createStackNavigator(
     navigationOptions: {
       headerTitle: "Accueil",
       headerStyle: {
-        backgroundColor: mclColors.green
+        backgroundColor: mclColors.green,
       },
       headerTitleStyle: {
-        color: "#fff",
-        fontWeight: "normal"
-      }
+        fontWeight: "bold",
+        alignSelf:"center"
+      },
+      headerTintColor: "#fff"
     }
   }
 );
@@ -94,14 +95,15 @@ const OrderStack = createStackNavigator(
   },
   {
     navigationOptions: {
-      headerTitle: "Commande en cours",
+      headerTitle: "Commande de livraison",
       headerStyle: {
-        backgroundColor: mclColors.green
+        backgroundColor: mclColors.green,
       },
       headerTitleStyle: {
-        color: "#fff",
-        fontWeight: "normal"
-      }
+        fontWeight: "bold",
+        alignSelf:"center"
+      },
+      headerTintColor: "#fff"
     }
   }
 );
@@ -127,12 +129,13 @@ const AccountStack = createStackNavigator(
     navigationOptions: {
       headerTitle: "Compte utilisateur",
       headerStyle: {
-        backgroundColor: mclColors.green
+        backgroundColor: mclColors.green,
       },
       headerTitleStyle: {
-        color: "#fff",
-        fontWeight: "normal"
-      }
+        fontWeight: "bold",
+        alignSelf:"center"
+      },
+      headerTintColor: "#fff"
     }
   }
 );
@@ -155,12 +158,13 @@ const DeliveryStack = createStackNavigator(
     navigationOptions: {
       headerTitle: "Livraisons",
       headerStyle: {
-        backgroundColor: mclColors.green
+        backgroundColor: mclColors.green,
       },
       headerTitleStyle: {
-        color: "#fff",
-        fontWeight: "normal"
-      }
+        fontWeight: "bold",
+        alignSelf:"center"
+      },
+      headerTintColor: "#fff"
     }
   }
 );
@@ -180,12 +184,13 @@ const CustomerStack = createStackNavigator(
     navigationOptions: {
       headerTitle: "Suivi de commandes",
       headerStyle: {
-        backgroundColor: mclColors.green
+        backgroundColor: mclColors.green,
       },
       headerTitleStyle: {
-        color: "#fff",
-        fontWeight: "normal"
-      }
+        fontWeight: "bold",
+        alignSelf:"center"
+      },
+      headerTintColor: "#fff"
     }
   }
 );
@@ -194,62 +199,61 @@ CustomerStack.navigationOptions = {
   tabBarIcon: ({ tintColor }) => MainTabNavigationIcon(tintColor, "customer")
 };
 
-// export const MainTabNavigation = createMaterialTopTabNavigator(
-//   {
-//     HomeSTK: HomeStack,
-//     OrderSTK: OrderStack,
-//     AccountSTK: AccountStack,
-//     DeliverySTK: DeliveryStack,
-//     CustomerSTK: CustomerStack
-//   },
-
-//   {
-//     tabBarPosition: "bottom",
-//     swipeEnabled: true,
-//     animationEnabled: false,
-//     tabBarOptions: {
-//       activeTintColor: mclColors.green,
-//       inactiveTintColor: mclColors.gray,
-//       shiftting: true,
-//       showLabel: false,
-//       showIcon: true,
-//       style: {
-//         backgroundColor: "#f5f5f0",
-//         height: 60,
-//         padding: 5,
-//         borderTopWidth: 0.4
-//       },
-//       indicatorStyle: {
-//         height: 0,
-//         backgroundColor: "#F5A623"
-//       }
-//     }
-//   }
-// );
-
-const MainTabNavigation = createMaterialBottomTabNavigator(
+export const MainTabNavigation = createMaterialTopTabNavigator(
   {
-   Home: HomeStack,
-   Order: OrderStack,
-   Account: AccountStack,
-   Delivery: DeliveryStack,
-   Customer: CustomerStack
+    HomeSTK: HomeStack,
+    OrderSTK: OrderStack,
+    AccountSTK: AccountStack,
+    DeliverySTK: DeliveryStack,
+    CustomerSTK: CustomerStack
   },
+
   {
-    shifting: true,
-    labeled: false,
-    activeColor: mclColors.green,
-    inactiveColor: "#000",
-    barStyle: {
-      backgroundColor: "#fff",
-      height: 60,
-      padding: 5,
-      borderTopWidth: 0.4
-    },
-    initialRouteName: "Home"
+    tabBarPosition: "bottom",
+    swipeEnabled: true,
+    animationEnabled: true,
+    tabBarOptions: {
+      activeTintColor: mclColors.green,
+      inactiveTintColor: "#000",
+      shiftting: true,
+      showLabel: false,
+      showIcon: true,
+      style: {
+        backgroundColor: "#fff",
+        height: 60,
+        padding: 5,
+        borderTopWidth: 0.4
+      },
+      indicatorStyle: {
+        height: 0,
+        backgroundColor: "#fff"
+      }
+    }
   }
 );
 
+// const MainTabNavigation = createMaterialBottomTabNavigator(
+//   {
+//     Home: HomeStack,
+//     Order: OrderStack,
+//     Account: AccountStack,
+//     Delivery: DeliveryStack,
+//     Customer: CustomerStack
+//   },
+//   {
+//     shifting: true,
+//     labeled: false,
+//     activeColor: mclColors.green,
+//     inactiveColor: "#000",
+//     barStyle: {
+//       backgroundColor: "#fff",
+//       height: 60,
+//       padding: 5,
+//       borderTopWidth: 0.4
+//     },
+//     initialRouteName: "Home"
+//   }
+// );
 
 const mainApp = createSwitchNavigator(
   {

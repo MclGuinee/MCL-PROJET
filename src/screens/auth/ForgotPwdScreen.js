@@ -4,25 +4,15 @@ import { styles } from "./styles";
 import {  commonStyles } from "../screens-util/commonStyles";
 
 export default class ForgotPwdScreen extends React.Component {
-  state = {
-    showToast: false
-  }
+  // state = {
+  //   showToast: false
+  // }
 
   render() {
     return (
       <Container style={styles.container}>
-        <Header>
-          <Left>
-            <Button transparent onPress={() => this.props.navigation.goBack()}>
-              <Icon name="arrow-back" />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Mot de passe oublié</Title>
-          </Body>
-          <Right />
-        </Header>
-        <Content>
+       
+        <Content padder>
           <Body style={[commonStyles.centerComponent, { marginVertical: 15}]}>
             <Text>Vous avez oublié votre mot de passe! </Text>
             <Text>
@@ -40,12 +30,13 @@ export default class ForgotPwdScreen extends React.Component {
               <Button
                 success
                 onPress={() =>
-                  Toast.show({
-                    text: "Nouveau mot de passe généré et envoyé à test@test.fr",
-                    buttonText: "OK",
-                    position: "top",
-                    type: "success"                   
-                  })
+                  // Toast.show({
+                  //   text: "Nouveau mot de passe généré et envoyé à test@test.fr",
+                  //   buttonText: "OK",
+                  //   position: "top",
+                  //   type: "success"                   
+                  // })
+                  alert("Mot de passe envoyé!")
                 }
               >
                 <Text>ENVOYER</Text>

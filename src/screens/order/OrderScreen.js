@@ -4,6 +4,7 @@ import { TextInput } from "react-native";
 import DatePicker from "react-native-datepicker";
 import { Container, Header, Content, Left, Right, Title, Form, Item, ListItem, Icon, Input, Picker, Body, Text, Label, Button } from "native-base";
 import StepIndicator from "react-native-step-indicator";
+import DeviceInfo from "react-native-device-info";
 
 /*Styles*/
 import { styles } from "./styles";
@@ -12,35 +13,49 @@ import { mclColors } from "../screens-util/mclColors";
 
 /*Custom imports*/
 import { stepIndicatorLabels, stepIndicatorStyles } from "../screens-util/stepIndicatorProperties";
+import { Platform } from "react-native";
 
 export default class OrderScreen extends React.Component {
   state = {
-    selected: null,
+    selectedStartAddress: null,
+    selectedEndAddress: null,
     addresses: [],
-    deliveryDate: new Date()
+    deliveryDate: new Date(),
+    tel: 0
   };
 
-  onValueChange(value) {
+  componentWillMount() {
+    if (Platform.OS !== "android") {
+      this.setState({ tel: DeviceInfo.getPhoneNumber() });
+    }
+  }
+
+  onStartAddressValueChange(value) {
     this.setState({
-      selected: value
+      selectedStartAddress: value
+    });
+  }
+
+  onEndAddressValueChange(value) {
+    this.setState({
+      selectedEndAddress: value
     });
   }
 
   render() {
     return (
       <Container style={styles.container}>
-        <Content>
+        <Content style={commonStyles.stepIndicatorContent} padder>
           <StepIndicator customStyles={stepIndicatorStyles} currentPosition={0} labels={stepIndicatorLabels} stepCount={4} direction="horizontal" />
           <Form>
             <Item>
               <Picker
                 mode="dropdown"
-                iosIcon={<Icon name="ios-arrow-down-outline" />}
-                placeholderIconColor={mclColors.green}
-                selectedValue={this.state.selected}
-                onValueChange={this.onValueChange.bind(this)}
+                iosIcon={<Icon name="ios-arrow-down-outline" style={{ color: mclColors.green }} />}
+                selectedValue={this.state.selectedStartAddress}
+                onValueChange={this.onStartAddressValueChange.bind(this)}
               >
-                <Picker.Item label="Adresse d'enlèvement" value={null} />
+                <Picker.Item label="Adresse d'enlèvement" value={-1} />
                 <Picker.Item label="Adresse 1" value="key0" />
                 <Picker.Item label="Adresse 2" value="key1" />
                 <Picker.Item label="Adresse 3" value="key2" />
@@ -51,7 +66,7 @@ export default class OrderScreen extends React.Component {
                 })} */}
               </Picker>
               <Button transparent success onPress={() => this.props.navigation.navigate("OrderAddressMap")}>
-                <Icon active ios="ios-pin" android="md-pin" />
+                <Icon active ios="ios-pin" android="md-pin" style={commonStyles.mclIcon} />
               </Button>
             </Item>
             <Item>
@@ -59,8 +74,8 @@ export default class OrderScreen extends React.Component {
                 mode="dropdown"
                 iosIcon={<Icon name="ios-arrow-down-outline" />}
                 placeholderIconColor={mclColors.green}
-                selectedValue={this.state.selected}
-                onValueChange={this.onValueChange.bind(this)}
+                selectedValue={this.state.selectedEndAddress}
+                onValueChange={this.onEndAddressValueChange.bind(this)}
               >
                 <Picker.Item label="Adresse de livraison" value={null} />
                 <Picker.Item label="Adresse 1" value="key0" />
@@ -77,18 +92,17 @@ export default class OrderScreen extends React.Component {
               </Button>
             </Item>
             <Item>
-              <Icon ios="ios-phone-portrait" android="md-phone-portrait" style={[{ fontSize: 30, marginVertical: 10 }, mclColors.green]} />
-              <TextInput keyboardType="number-pad" placeholder="Mobile : 622000000" />
+              <Icon ios="ios-phone-portrait" android="md-phone-portrait" style={[{ fontSize: 30, marginVertical: 10, marginLeft:5 }, mclColors.green]} />
+              <TextInput keyboardType="number-pad" placeholder="Saisir le numéro de téléphone" />
             </Item>
-            <Item last>
-              <Label>Date d'enlèvement: </Label>
 
+            <Item last>
               <DatePicker
                 style={{ width: 200 }}
                 date={this.state.deliveryDate}
                 mode="datetime"
-                placeholder="select date"
-                format="DD-MM-YYYY hh:mm"
+                placeholder="Date d'enlèvement souhaitée"
+                format="DD/MM/YYYY HH:mm"
                 is24Hour={true}
                 minDate="2019-01-01"
                 maxDate="2030-12-01"
@@ -96,17 +110,14 @@ export default class OrderScreen extends React.Component {
                 cancelBtnText="Annuler"
                 customStyles={{
                   dateIcon: {
-                    //position: "absolute",
+                    position: "absolute",
                     left: 0,
                     top: 4,
-                    marginLeft: 0,
-                    marginRight: 5
+                    marginLeft: 0
                   },
                   dateInput: {
-                    marginLeft: 5,
-                    borderWidth: 0,
-                    padding: 2,
-                    alignItems: "flex-start"
+                    marginLeft: 36,
+                    borderWidth:0
                   }
                 }}
                 onDateChange={date => {
@@ -114,12 +125,12 @@ export default class OrderScreen extends React.Component {
                 }}
               />
             </Item>
-            <Body style={[commonStyles.centerComponent, commonStyles.btn]}>
-              <Button success onPress={() => this.props.navigation.navigate("OrderSummary")}>
-                <Text>COMMANDER</Text>
-              </Button>
-            </Body>
-          </Form>
+            </Form>
+              <Body style={commonStyles.btn}>
+                <Button success onPress={() => this.props.navigation.navigate("OrderSummary")}>
+                  <Text>VOIR LE TARIF</Text>
+                </Button>
+              </Body>
         </Content>
       </Container>
     );

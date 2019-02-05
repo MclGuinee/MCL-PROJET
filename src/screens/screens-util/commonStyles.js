@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { mclColors } from './mclColors';
+import { mclColors } from "./mclColors";
 
 export const commonStyles = StyleSheet.create({
   headerContainer: {
@@ -40,13 +40,13 @@ export const commonStyles = StyleSheet.create({
     color: mclColors.green
   },
 
-  mclIcon :{
-    fontSize:28,
-    color:mclColors.green
+  mclIcon: {
+    fontSize: 28,
+    color: mclColors.green
   },
 
-  tabBarIcon :{
-    fontSize:28
+  tabBarIcon: {
+    fontSize: 28
   },
 
   map: {
@@ -54,5 +54,7 @@ export const commonStyles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject
   },
 
+  stepIndicatorContent: {
+    marginVertical: 10
+  }
 });
-
