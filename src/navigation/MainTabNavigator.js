@@ -1,6 +1,5 @@
 import React from "react";
 import { createStackNavigator, createMaterialTopTabNavigator, createSwitchNavigator } from "react-navigation";
-import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 import { Icon } from "native-base";
 
 /* Screens */
@@ -15,17 +14,12 @@ import PaymentScreen from "../screens/payment/PaymentScreen";
 import ConfirmationScreen from "../screens/payment/ConfirmationScreen";
 import DisplayAddressesMapScreen from "../screens/delivery/DisplayAddressesMapScreen";
 import CustomerOrdersListScreen from "../screens/order/CustomerOrdersListScreen";
-import AvailableDeliveriesScreen from "../screens/delivery/AvailableDeliveriesScreen";
-
-/* Icons */
-import { Ionicons } from "@expo/vector-icons";
-import { ProfileIcon } from "../icons/profileIcon";
+import DeliveriesScreen from "../screens/delivery/DeliveriesScreen";
 
 /*Styles*/
 import { commonStyles } from "../screens/screens-util/commonStyles";
 import { mclColors } from "../screens/screens-util/mclColors";
-import DeliveriesScreen from "../screens/delivery/DeliveriesScreen";
-import { color } from "color";
+
 
 const MainTabNavigationIcon = (tintColor, type) => {
   switch (type) {

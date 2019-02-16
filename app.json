@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "MCL",
-    "description": "A very interesting project.",
+    "description": "MCL",
     "slug": "MCL",
     "privacy": "public",
     "sdkVersion": "31.0.0",
@@ -24,7 +24,19 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mcl.ios",
+      "config": {
+        "googleMapsApiKey": "AIzaSyC57AOhthzF3FB8XBdgs2MhUUx70m85d0E"
+      }
+    },
+    "android": {
+      "package": "com.mcl.android",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyA5yQfC9yNkembkk_KAKDwiQG_EeaEItJQ"
+        }
+      }
     }
   }
 }
