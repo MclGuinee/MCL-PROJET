@@ -11,3 +11,4 @@ firebase-constants.js
 *.vscode
 Ionicons.json
 localreadme.txt
+.env
