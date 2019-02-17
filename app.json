@@ -27,14 +27,14 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.mcl.ios",
       "config": {
-        "googleMapsApiKey": process.env.REACT_APP_GOOGLE_MAP_API_KEY_IOS
+        "googleMapsApiKey": "AIzaSyC57AOhthzF3FB8XBdgs2MhUUx70m85d0E"
       }
     },
     "android": {
       "package": "com.mcl.android",
       "config": {
         "googleMaps": {
-          "apiKey": process.env.REACT_APP_GOOGLE_MAP_API_KEY_ANDROID
+          "apiKey": "AIzaSyA5yQfC9yNkembkk_KAKDwiQG_EeaEItJQ"
         }
       }
     }

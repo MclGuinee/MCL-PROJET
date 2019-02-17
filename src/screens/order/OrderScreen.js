@@ -88,7 +88,7 @@ export default class OrderScreen extends React.Component {
                 })} */}
               </Picker>
               <Button transparent success onPress={() => this.props.navigation.navigate("OrderAddressMap")}>
-                <Icon active name="pin" />
+                <Icon active ios="ios-pin" android="md-pin" style={commonStyles.mclIcon} />
               </Button>
             </Item>
             <Item>

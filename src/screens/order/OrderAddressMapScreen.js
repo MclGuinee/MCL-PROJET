@@ -1,110 +1,100 @@
-import React, {Component} from 'react';
-import {View,Text,StyleSheet,Dimensions} from 'react-native';
-import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import React, { Component } from "react";
+import { Text, View, StyleSheet } from "react-native";
+import { Constants, Location, Permissions } from "expo";
+import MapView from "react-native-maps";
+import { Container, Content } from "native-base";
 
-const {width,height} = Dimensions.get('window')
+/*Import de styles */
+import { styles } from "./styles";
 
-class OrderAddressMapScreen extends Component{
-    constructor() {
-        super();
-        this.state = {
-            region: {
-                latitude: "",
-                longitude: "",
-                latitudeDelta:"",
-                longitudeDelta:"",
-                accuracy:"67",
-                }
-    }
+const latitudeDelta = 0.00922 * 1.5;
+const longitudeDelta = 0.00421 * 1.5;
 
-  }
-
-    calDelta(lat,long,accuracy){
-       const oneDegreeOfLatitudeInMeters = 111.32 * 1000;
-       const latDelta =accuracy / oneDegreeOfLatitudeInMeters;
-       const longDelta = accuracy / (oneDegreeOfLatitudeInMeters * Math.cos(lat * (Math.PI / 180)));
-
-        this.setState({
-            region:{
-              latitude:lat,
-              longitude:long,
-              latitudeDelta:latDelta,
-              longitudeDelta:longDelta,
-              accuracy:accuracy,
-              },
-            });
-    }
-
-    componentWillMount(){
-
-      this.calDelta(9.51706,-13.6998,5); //coordonnées GPS Conakry
-
-    // this.watchID = navigator.geolocation.watchPosition((position)=>
-    //        {
-    //         const lat = position.coords.latitude;
-    //         const long = position.coords.longitude;
-    //         const accuracy = position.coords.accuracy;
-               
-    //         this.calDelta(lat,long,accuracy)
-    //     },
-
-    //     (error)=>{
-    //           console.log(error.message)
-    //     },
-    //     {enableHighAccuracy:true,timeout:20000,maximumAge:1000,}
-    //   )
-   }
-
-  componentWillUnmount(){
-      //navigator.geolocation.clearWatch(this.watchID)
-  }
-
-  marker(){
-      return {
-          latitude:this.state.region.latitude,
-          longitude:this.state.region.longitude
-      }
-  }
-
-    render(){
-        console.log(this.state.region)
-        return(
-              <View style={styles.container}> 
-                {this.state.region.latitude ? 
-                <MapView 
-                provider={PROVIDER_GOOGLE}
-                 style={styles.map}
-                 initialRegion={this.state.region}
-                 showsUserLocation={true}
-                  >
-                 {/* <MapView.Marker
-                    coordinate={this.marker()}
-                    title="You"
-                    description="You are here!"
-                    pinColor='green'
-                 />
-                  */}
-                </MapView>
-                : <Text>cordinates not found</Text> }
-              
-               
-              </View>
-          
-           )
-
-    }
-}
-
-const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        justifyContent:'center'
+export default class OrderAddressMapScreen extends Component {
+  state = {
+    region: {
+      longitude: null,
+      latitude: null,
+      latitudeDelta: latitudeDelta,
+      longitudeDelta: longitudeDelta
     },
-    map: {
-        width:width,
-        height:height,
-        flex: 1
-        }
-});
+    initialRegion: { longitude: -13.712222, latitude: 9.509167, latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta },
+    selectedLocation: {
+      longitude: null,
+      latitude: null,
+      customAddressName: null
+    }
+  };
 
-export default OrderAddressMapScreen;
+  componentDidMount() {
+    this._getLocationAsync();
+  }
+
+  _getLocationAsync = async () => {
+    let { status } = await Permissions.askAsync(Permissions.LOCATION);
+    if (status !== "granted") {
+      console.log("Permission to access location was denied");
+    }
+
+    let location = await Location.getCurrentPositionAsync({});
+
+    let currentRegion = {
+      latitude: location.coords.latitude,
+      longitude: location.coords.longitude,
+      latitudeDelta: latitudeDelta,
+      longitudeDelta: longitudeDelta
+    };
+
+    this.setState({ region: currentRegion });
+  };
+
+  onMapPress(e) {
+    console.log(e.nativeEvent.coordinate.longitude);
+    let selectedRegion = {
+      latitude: e.nativeEvent.coordinate.latitude,
+      longitude: e.nativeEvent.coordinate.longitude,
+      latitudeDelta: latitudeDelta,
+      longitudeDelta: longitudeDelta
+    };
+
+    this.onRegionChange(selectedRegion);
+  }
+
+  onRegionChange(selectedRegion) {
+    this.setState({
+      region: selectedRegion
+    });
+  }
+
+  render() {
+    return (
+      <Container style={styles.container}>
+        <Content>
+          <View style={{ flex: 1 }}>
+            <MapView
+              style={styles.map}
+              region={this.state.region.latitude != null ? this.state.region : this.state.initialRegion}
+              showsUserLocation={true}
+              followUserLocation={true}
+              onRegionChange={this.onRegionChange.bind(this)}
+              onPress={this.onMapPress.bind(this)}
+            >
+              {/* <MapView.Marker
+            coordinate={{
+              latitude: this.state.region.latitude + 0.0005 || this.state.initialRegion.latitude,
+              longitude: this.state.region.longitude + 0.0005 || this.state.initialRegion.longitude,
+            }}
+          > */}
+              <View>
+                <Text style={{ color: "#000" }}>
+                  {this.state.lastLong} / {this.state.lastLat}
+                </Text>
+              </View>
+              {/* </MapView.Marker> */}
+            </MapView>
+          </View>
+        </Content>
+      </Container>
+    );
+  }
+}
