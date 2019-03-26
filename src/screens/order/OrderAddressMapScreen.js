@@ -1,29 +1,34 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Dimensions } from "react-native";
 import { Constants, Location, Permissions } from "expo";
-import MapView from "react-native-maps";
-import { Container, Content } from "native-base";
+import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import { Container, Content, TextInput, Body, Label, Right, Button } from "native-base";
 
 /*Import de styles */
 import { styles } from "./styles";
+import { Provider } from "react-redux";
 
-const latitudeDelta = 0.00922 * 1.5;
-const longitudeDelta = 0.00421 * 1.5;
+const { width, height } = Dimensions.get("window");
+const ASPECT_RATIO = width / height;
+const LATITUDE = 9.568466;
+const LONGITUDE = -13.645032;
+
+const latitudeDelta = 0.00922 * 35;
+const longitudeDelta = latitudeDelta * ASPECT_RATIO;
 
 export default class OrderAddressMapScreen extends Component {
   state = {
     region: {
-      longitude: null,
-      latitude: null,
+      longitude: LONGITUDE,
+      latitude: LATITUDE,
       latitudeDelta: latitudeDelta,
       longitudeDelta: longitudeDelta
     },
-    initialRegion: { longitude: -13.712222, latitude: 9.509167, latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta },
-    selectedLocation: {
-      longitude: null,
-      latitude: null,
-      customAddressName: null
-    }
+    currentLocation: {
+      longitude: LONGITUDE,
+      latitude: LATITUDE
+    },
+    addressName: ""
   };
 
   componentDidMount() {
@@ -49,7 +54,6 @@ export default class OrderAddressMapScreen extends Component {
   };
 
   onMapPress(e) {
-    console.log(e.nativeEvent.coordinate.longitude);
     let selectedRegion = {
       latitude: e.nativeEvent.coordinate.latitude,
       longitude: e.nativeEvent.coordinate.longitude,
@@ -66,35 +70,27 @@ export default class OrderAddressMapScreen extends Component {
     });
   }
 
+  saveAddress(){
+  }
+
   render() {
     return (
-      <Container style={styles.container}>
-        <Content>
-          <View style={{ flex: 1 }}>
-            <MapView
-              style={styles.map}
-              region={this.state.region.latitude != null ? this.state.region : this.state.initialRegion}
-              showsUserLocation={true}
-              followUserLocation={true}
-              onRegionChange={this.onRegionChange.bind(this)}
-              onPress={this.onMapPress.bind(this)}
-            >
-              {/* <MapView.Marker
-            coordinate={{
-              latitude: this.state.region.latitude + 0.0005 || this.state.initialRegion.latitude,
-              longitude: this.state.region.longitude + 0.0005 || this.state.initialRegion.longitude,
-            }}
-          > */}
-              <View>
-                <Text style={{ color: "#000" }}>
-                  {this.state.lastLong} / {this.state.lastLat}
-                </Text>
-              </View>
-              {/* </MapView.Marker> */}
-            </MapView>
+      <View>
+        {/* <MapView 
+        initialRegion={this.state.region} 
+        provider={PROVIDER_GOOGLE} 
+        style={styles.map} 
+        onPress={e => onMapPress(e)}
+        /> */}
+        
+
+          <View>
+            <TextInput placeholder="Donner un nom à cette adresse" onChangeText={text => this.setState({ addressName: text })} />
+            <Button success onPress={() => saveAddress()}>
+              <Text>VALIDER</Text>
+            </Button>
           </View>
-        </Content>
-      </Container>
+      </View>
     );
   }
 }

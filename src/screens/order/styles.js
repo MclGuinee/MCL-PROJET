@@ -13,15 +13,15 @@ const styles = StyleSheet.create({
     marginBottom: 30
   },
 
-  // map: {
-  //   ...StyleSheet.absoluteFillObject
-  // }
-
   map: {
-    width: width,
-    height: height,
-    flex: 1
+    ...StyleSheet.absoluteFillObject
   }
+
+  // map: {
+  //   width: width,
+  //   height: height,
+  //   flex: 1
+  // }
 });
 
 export { styles };
