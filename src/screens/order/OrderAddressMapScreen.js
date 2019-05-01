@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet, Dimensions } from "react-native";
-import { Constants, Location, Permissions } from "expo";
+import { View, Dimensions } from "react-native";
+import { Location, Permissions } from "expo";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
-import { Container, Content, TextInput, Body, Label, Right, Button } from "native-base";
+import { TextInput } from "native-base";
+import {AddressNameCallout} from "./AddressNameCallout";
 
 /*Import de styles */
 import { styles } from "./styles";
@@ -70,26 +71,22 @@ export default class OrderAddressMapScreen extends Component {
     });
   }
 
-  saveAddress(){
-  }
+  saveAddress() {}
 
   render() {
     return (
       <View>
-        {/* <MapView 
-        initialRegion={this.state.region} 
-        provider={PROVIDER_GOOGLE} 
-        style={styles.map} 
-        onPress={e => onMapPress(e)}
-        /> */}
-        
-
+        <MapView initialRegion={this.state.region} provider={PROVIDER_GOOGLE} style={styles.map} onPress={e => this.onMapPress(e)} />
+        {/* <MapView.Callout>
           <View>
-            <TextInput placeholder="Donner un nom à cette adresse" onChangeText={text => this.setState({ addressName: text })} />
-            <Button success onPress={() => saveAddress()}>
-              <Text>VALIDER</Text>
-            </Button>
+            <TextInput placeholder={"Search"} />
           </View>
+        </MapView.Callout> */}
+        <MapView.Callout tooltip style={styles.callout}>
+                <AddressNameCallout
+                  aAddressName={"character.name"}
+                />
+              </MapView.Callout>
       </View>
     );
   }

@@ -16,13 +16,7 @@ import { stepIndicatorLabels, stepIndicatorStyles } from "../screens-util/stepIn
 import { Platform } from "react-native";
 
 export default class OrderScreen extends React.Component {
-  state = {
-    selectedStartAddress: null,
-    selectedEndAddress: null,
-    addresses: [],
-    deliveryDate: new Date(),
-    tel: 0
-  };
+  
 
   componentWillMount() {
     if (Platform.OS !== "android") {
@@ -40,6 +34,17 @@ export default class OrderScreen extends React.Component {
     this.setState({
       selectedEndAddress: value
     });
+  }
+
+  addOrder=() =>{
+    if(this.state.selectedStartAddress=="" 
+    || this.state.selectedEndAddress==""
+    || this.state.deliveryDate==""
+    || this.state.tel ==0){
+      return
+    }else{
+      this.props.add()
+    }
   }
 
   render() {
@@ -136,3 +141,23 @@ export default class OrderScreen extends React.Component {
     );
   }
 }
+
+
+
+//Mettfe les infos du state dans le props du composant
+function mapStateToProps(state, props) {
+  return {
+      loading: state.dataReducer.loading,
+      quotes: state.dataReducer.quotes
+  }
+}
+
+// Doing this merges our actions into the component’s props,
+// while wrapping them in dispatch() so that they immediately dispatch an Action.
+// Just by doing this, we will have access to the actions defined in out actions file (action/home.js)
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(ReduxActions, dispatch);
+}
+
+//Connect everything
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

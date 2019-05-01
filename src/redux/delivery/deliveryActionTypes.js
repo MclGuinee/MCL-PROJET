@@ -1,1 +1,1 @@
-export const ORDER = 'delivery/ORDER';
+export const ADD_DELIVERY = 'ADD_DELIVERY';

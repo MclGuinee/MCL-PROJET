@@ -6,9 +6,9 @@ let initialState = {
 
 const deliveryReducer = (state = initialState, action) => {
     switch (action.type) {
-        case t.ORDER: {
-            let { delivery } = action;
-            return {...state, delivery};
+        case t.ADD_DELIVERY: {
+            state = Object.assign({}, state, { delivery: action.delivery/*, error:action.error*/ });
+            return state;
         }
 
         // case t.LOGGED_OUT: {
