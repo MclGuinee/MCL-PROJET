@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView, View } from "react-native";
+import { SafeAreaView, View , UIManager,} from "react-native";
 import { Font, AppLoading } from "expo";
 import { persistor, store } from "./src/redux/store";
 import { Provider } from "react-redux";
@@ -9,6 +9,7 @@ import MainApp from "./src/navigation/MainTabNavigator";
 import { StyleProvider } from "native-base";
 import getTheme from "./src/theme/components";
 import variables from "./src/theme/variables/commonColor";
+
 
 export default class App extends React.Component {
   constructor(props) {

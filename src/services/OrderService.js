@@ -1,9 +1,8 @@
 import {
     database
 } from "../config/firebase-init";
-
-import geolib from 'geolib';
 import firebase from 'firebase';
+import geolib from 'geolib';
 
 
 /**
@@ -134,6 +133,112 @@ export function findDelivererDeliveries(userId) {
             .then(deliveriesList => {
                 if (deliveriesList.exists) {
                     resolve(deliveriesList);
+                }
+            })
+            .catch(error => {
+                reject(error);
+            });
+    });
+}
+
+/**
+ * Find customer by id
+ * @param {*} userId  customer id
+ */
+export function findCustomer(userId) {
+    return new Promise((resolve, reject) => {
+        var docRef = database.collection("customers").where("customerId", "==", userId);
+        docRef
+            .get()
+            .then(customer => {
+                if (customer.exists) {
+                    resolve(customer);
+                }
+            })
+            .catch(error => {
+                reject(error);
+            });
+    });
+
+}
+
+/**
+ * Find customer preffered addresses
+ * @param {*} userId 
+ */
+export function findCustomerAddresses(userId) {
+
+    return new Promise((resolve, reject) => {
+
+        //ge customer adresses collection to find selected user addresses
+        var docRef = database.collection("custumerAddresses").doc(userId);
+
+        docRef
+            .get()
+            .then(addresseList => {
+
+                if (addresseList.exists) {
+                    resolve(Object.values(addresseList.data()));
+                }
+            })
+            .catch(error => {
+                reject(error);
+            });
+    });
+
+}
+
+/**
+ * Add a customer preffered address
+ * @param {*} newAddress the customer address
+ * @param {*} userId the user uid
+ */
+export function saveCustomerAddress(userId, newAddress) {
+    return new Promise((resolve, reject) => {
+
+        //Get customer addresses array
+        var docRef = database.collection("custumerAddresses").doc(userId);
+
+        //var exists;
+        docRef.get().then(customerAddresses => {
+            //exists=customerAddresses.exists;
+
+            if (customerAddresses.exists) {
+                //update it
+                docRef.update({
+                    addresses: firebase.firestore.FieldValue.arrayUnion(newAddress)
+                });
+            } else {
+                //Create it
+                let newAddresses = [];
+                newAddresses.push(newAddress);
+                docRef.set({
+                    addresses: newAddresses
+                });
+            }
+        });
+
+
+        //Add new address to database
+
+
+    });
+}
+
+/**
+ * Find deliverer by id
+ * @param {*} userId 
+ */
+export function findDeliverer(userId) {
+    return new Promise((resolve, reject) => {
+
+        //get deliverer collection to find the selected deliverer
+        var docRef = database.collection("deliverers").where("delivererId", "==", userId);
+        docRef
+            .get()
+            .then(deliverer => {
+                if (deliverer.exists) {
+                    resolve(deliverer);
                 }
             })
             .catch(error => {

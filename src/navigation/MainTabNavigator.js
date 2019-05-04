@@ -3,7 +3,7 @@ import { createStackNavigator, createMaterialTopTabNavigator, createSwitchNaviga
 import { Icon } from "native-base";
 
 /* Screens */
-import HomeScreen from "../screens/home/HomeScreen";
+import HomeScreen from "../screens/HomeScreen";
 import OrderScreen from "../screens/order/OrderScreen";
 import ProfileScreen from "../screens/auth/ProfileScreen";
 import AccountScreen from "../screens/auth/AccountScreen";
@@ -225,29 +225,6 @@ export const MainTabNavigation = createMaterialTopTabNavigator(
     }
   }
 );
-
-// const MainTabNavigation = createMaterialBottomTabNavigator(
-//   {
-//     Home: HomeStack,
-//     Order: OrderStack,
-//     Account: AccountStack,
-//     Delivery: DeliveryStack,
-//     Customer: CustomerStack
-//   },
-//   {
-//     shifting: true,
-//     labeled: false,
-//     activeColor: mclColors.green,
-//     inactiveColor: "#000",
-//     barStyle: {
-//       backgroundColor: "#fff",
-//       height: 60,
-//       padding: 5,
-//       borderTopWidth: 0.4
-//     },
-//     initialRouteName: "Home"
-//   }
-// );
 
 const mainApp = createSwitchNavigator(
   {

@@ -12,3 +12,4 @@ firebase-constants.js
 Ionicons.json
 localreadme.txt
 .env
+src/config/firebase-contants.js

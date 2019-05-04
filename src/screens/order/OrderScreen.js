@@ -5,6 +5,7 @@ import DatePicker from "react-native-datepicker";
 import { Container, Header, Content, Left, Right, Title, Form, Item, ListItem, Icon, Input, Picker, Body, Text, Label, Button } from "native-base";
 import StepIndicator from "react-native-step-indicator";
 import DeviceInfo from "react-native-device-info";
+import { Platform } from "react-native";
 
 /*Styles*/
 import { styles } from "./styles";
@@ -13,15 +14,27 @@ import { mclColors } from "../screens-util/mclColors";
 
 /*Custom imports*/
 import { stepIndicatorLabels, stepIndicatorStyles } from "../screens-util/stepIndicatorProperties";
-import { Platform } from "react-native";
+//import {saveDelivery} from "../../services/OrderService";
 
 export default class OrderScreen extends React.Component {
   
+   state={
+     selectedStartAddress:'',
+     selectedEndAddress:'', 
+   } 
 
-  componentWillMount() {
+  async componentWillMount() {
+
+    //  const {customerAddresses, } = this.state;
+
+    //  customerAddresses= await orderService.findCustomerAddresses(customerId);
+    //  this.setState({customerAddresses});
+
     if (Platform.OS !== "android") {
       this.setState({ tel: DeviceInfo.getPhoneNumber() });
     }
+
+
   }
 
   onStartAddressValueChange(value) {
@@ -145,19 +158,19 @@ export default class OrderScreen extends React.Component {
 
 
 //Mettfe les infos du state dans le props du composant
-function mapStateToProps(state, props) {
-  return {
-      loading: state.dataReducer.loading,
-      quotes: state.dataReducer.quotes
-  }
-}
+// function mapStateToProps(state, props) {
+//   return {
+//       loading: state.dataReducer.loading,
+//       quotes: state.dataReducer.quotes
+//   }
+// }
 
 // Doing this merges our actions into the component’s props,
 // while wrapping them in dispatch() so that they immediately dispatch an Action.
 // Just by doing this, we will have access to the actions defined in out actions file (action/home.js)
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(ReduxActions, dispatch);
-}
+// function mapDispatchToProps(dispatch) {
+//   return bindActionCreators(ReduxActions, dispatch);
+// }
 
 //Connect everything
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+//export default connect(mapStateToProps, mapDispatchToProps)(Home);

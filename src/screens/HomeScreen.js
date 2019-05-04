@@ -4,13 +4,13 @@ import { Image, Dimensions, Alert } from "react-native";
 import { Container, Content, H3, Toast, Button, Header, Left, Right, Title, Card, CardItem, Text, Body, Thumbnail } from "native-base";
 
 /*Styles*/
-import { styles } from "./styles";
-import { commonStyles } from "../screens-util/commonStyles";
+import { commonStyles } from "./screens-util/commonStyles";
+import { StyleSheet } from 'react-native';
 
 /*Constantes*/
 const deviceWidth = Dimensions.get("window").width;
-const repasFaitMaison = require("../../../assets/images/repasfaitmaison-170x112.jpg");
-const repasRestau = require("../../../assets/images/repasrestau-160x90.jpg");
+const repasFaitMaison = require("../../assets/images/repasfaitmaison-170x112.jpg");
+const repasRestau = require("../../assets/images/repasrestau-160x90.jpg");
 
 /*Component class */
 export default class HomeScreen extends React.Component {
@@ -33,7 +33,7 @@ export default class HomeScreen extends React.Component {
               </Left>
             </CardItem>
 
-            <CardItem cardBody button onPress={() => this.props.navigation.navigate("Order")}>
+            <CardItem cardBody button onPress={() => this.props.navigation.navigate("OrderAddressMap")}>
               <Image
                 style={{
                   resizeMode: "cover",
@@ -77,3 +77,10 @@ export default class HomeScreen extends React.Component {
     );
   }
 }
+
+const styles=StyleSheet.create({
+  container :{
+    flex: 1,
+    backgroundColor:"#fff",
+  }
+})
